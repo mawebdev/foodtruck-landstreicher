@@ -96,7 +96,6 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
       <img src="cid:logo" alt="Der Landstreicher – Foodtruck &amp; Catering" width="110" height="111" style="display:block;border:0;" />
       <div style="margin-top:14px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#F4F0E8;">Foodtruck &middot; Catering</div>
     </td></tr>
-    <tr><td style="padding:0 40px;"><div style="border-top:2px solid #A71919;"></div></td></tr>
     <tr><td style="padding:28px 40px 8px;font-family:Arial,Helvetica,sans-serif;">
       <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#A71919;font-weight:bold;">Buchungsanfrage</div>
       <div style="margin-top:8px;font-size:26px;font-weight:700;color:#111111;">Neue Anfrage über die Website</div>
