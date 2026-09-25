@@ -130,7 +130,13 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
   // Absender immer mit Anzeigename, z. B. „Foodtruck Landstreicher <anfrage@…>“.
   const fromAddress = (process.env.BOOKING_FROM_EMAIL ?? user ?? "").replace(/^.*<(.+)>.*/, "$1");
   const from = `Foodtruck Landstreicher <${fromAddress}>`;
-  const to = process.env.BOOKING_TO_EMAIL ?? site.email;
+  const to = (process.env.BOOKING_TO_EMAIL ?? site.email)
+    // Mehrere Empfänger erlaubt – kommagetrennt, z. B.
+    // BOOKING_TO_EMAIL=info@foodtruck-landstreicher.de,valimir@…
+    .split(",")
+    .map((addr) => addr.trim())
+    .filter(Boolean)
+    .join(",");
 
   const sendError: InquiryState = {
     status: "error",
