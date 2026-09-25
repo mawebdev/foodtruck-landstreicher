@@ -13,6 +13,21 @@ type PageMetaInput = {
   noindex?: boolean;
 };
 
+/**
+ * Tatsächliche Pixelmaße der Bilder, die als OG-Bild dienen (verifiziert mit
+ * sips). Falsch deklarierte Maße sind schlimmer als keine – deshalb pro Bild
+ * gepflegt statt pauschal.
+ */
+const ogImageDims: Record<string, { width: number; height: number }> = {
+  "/images/burger-heumilchkaese-rauke.jpg": { width: 1920, height: 1440 },
+  "/images/truck-landstreicher-front.jpg": { width: 1920, height: 1440 },
+  "/images/event-lange-tafel-abend.jpg": { width: 1920, height: 1440 },
+  "/images/hochzeitspaar-burger.jpg": { width: 1600, height: 1066 },
+  "/images/smoker.jpg": { width: 1600, height: 1104 },
+  "/images/party-wunderkerzen.jpg": { width: 1600, height: 860 },
+  "/images/koch-mit-zwei-burgern.jpg": { width: 1179, height: 968 },
+};
+
 export function pageMetadata({
   title,
   description,
@@ -32,7 +47,7 @@ export function pageMetadata({
       url: path,
       title,
       description,
-      images: [{ url: image, width: 1920, height: 1440, alt: title }],
+      images: [{ url: image, alt: title, ...ogImageDims[image] }],
     },
     twitter: { card: "summary_large_image", title, description, images: [image] },
     robots: noindex ? { index: false, follow: true } : undefined,
