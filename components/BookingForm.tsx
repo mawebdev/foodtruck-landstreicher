@@ -91,7 +91,9 @@ export function BookingForm() {
     control?.focus();
   }, [current]);
 
-  const rawErrors = { ...state.fieldErrors, ...clientErrors };
+  // Während die Anfrage unterwegs ist, keine Feldfehler zeigen – sonst blitzen
+  // veraltete Server-Fehler (z. B. an Name/E-Mail) beim Absenden kurz auf.
+  const rawErrors = { ...(pending ? {} : state.fieldErrors), ...clientErrors };
   const errors = Object.fromEntries(Object.entries(rawErrors).filter(([field]) => !edited.has(field)));
   const v = state.values ?? {};
 
@@ -331,9 +333,15 @@ export function BookingForm() {
             onClick={(e) => {
               if (mounted && !validateStep(current)) e.preventDefault();
             }}
-            className="group/btn inline-flex min-h-12 items-center justify-center gap-3 rounded-xs bg-red px-7 font-bold text-cream transition-colors hover:bg-red-dark disabled:opacity-60"
+            className="group/btn inline-flex min-h-12 items-center justify-center gap-3 rounded-xs bg-red px-7 font-bold text-cream transition-colors hover:bg-red disabled:cursor-progress disabled:opacity-80"
           >
-            {pending ? "Wird gesendet …" : "Anfrage senden"} <Arrow />
+            {pending ? "Wird gesendet …" : "Anfrage senden"}
+            {pending ? (
+              /* Fortschritts-Anzeige: drehender Punkt, solange die Anfrage unterwegs ist */
+              <span aria-hidden className="size-4 animate-spin rounded-full border-2 border-cream/30 border-t-cream" />
+            ) : (
+              <Arrow />
+            )}
           </button>
         )}
       </div>

@@ -90,9 +90,11 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
 <html lang="de"><body style="margin:0;padding:0;background:#E8E1D5;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#E8E1D5;padding:32px 12px;"><tr><td align="center">
   <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#F4F0E8;border:2px solid #111111;">
-    <tr><td style="padding:36px 40px 24px;" align="center">
-      <img src="cid:logo" alt="Der Landstreicher – Foodtruck &amp; Catering" width="96" height="97" style="display:block;border:0;" />
-      <div style="margin-top:14px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#6F6A61;">Foodtruck &middot; Catering</div>
+    <!-- Logo-Kopf auf dunklem Grund: das Logo ist weiße Grafik und braucht einen
+         dunklen Hintergrund, um sichtbar zu sein (wie auf dem Truck). -->
+    <tr><td style="padding:36px 40px 28px;background:#111111;" align="center">
+      <img src="cid:logo" alt="Der Landstreicher – Foodtruck &amp; Catering" width="110" height="111" style="display:block;border:0;" />
+      <div style="margin-top:14px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#F4F0E8;">Foodtruck &middot; Catering</div>
     </td></tr>
     <tr><td style="padding:0 40px;"><div style="border-top:2px solid #A71919;"></div></td></tr>
     <tr><td style="padding:28px 40px 8px;font-family:Arial,Helvetica,sans-serif;">
