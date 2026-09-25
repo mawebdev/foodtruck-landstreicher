@@ -10,6 +10,7 @@ import { CTASection } from "@/components/CTASection";
 import { images } from "@/content/images";
 import { weddingFaq } from "@/content/faq";
 import { businessJsonLd, faqJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
+import { bookingHrefAnlass } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Foodtruck für eure Hochzeit – Burger & BBQ vom Landstreicher",
@@ -140,6 +141,7 @@ export default function HochzeitPage() {
         title={["Eure", "Hochzeit."]}
         text="Schickt uns Datum und Location – wir sagen euch, ob der Termin frei ist und was bei euch auf der Karte stehen kann."
         cta="Hochzeit anfragen"
+        href={bookingHrefAnlass("Hochzeit")}
         secondary={{ href: "/speisekarte", label: "Speisekarte ansehen" }}
       />
 

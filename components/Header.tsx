@@ -65,11 +65,11 @@ export function Header() {
             width={600}
             height={606}
             preload
-            className={`w-auto transition-[height] duration-300 ${scrolled ? "h-11" : "h-12 md:h-16"}`}
+            className={`w-auto transition-[height] duration-300 ${scrolled ? "h-9 md:h-11" : "h-9 md:h-16"}`}
           />
-          <span className="hidden leading-none sm:block">
-            <span className="font-display block text-[1.35rem] uppercase">Der Landstreicher</span>
-            <span className="label mt-1 block text-[0.62rem] text-cream/60">Foodtruck · Catering</span>
+          <span className="leading-none">
+            <span className="font-display block text-[1.05rem] uppercase sm:text-[1.35rem]">Der Landstreicher</span>
+            <span className="label mt-1 block text-[0.55rem] text-cream/60 sm:text-[0.62rem]">Foodtruck · Catering</span>
           </span>
         </Link>
 
@@ -81,6 +81,7 @@ export function Header() {
                 <li key={item.href} className="group/nav relative">
                   <Link
                     href={item.href}
+                    onClick={(e) => e.currentTarget.blur()}
                     aria-current={active ? "page" : undefined}
                     className={`relative whitespace-nowrap py-2 text-[0.92rem] font-semibold transition-colors hover:text-cream ${
                       active ? "text-cream" : "text-cream/70"
@@ -105,6 +106,8 @@ export function Header() {
                             <li key={sub.href}>
                               <Link
                                 href={sub.href}
+                                // Fokus wegnehmen, sonst hält group-focus-within das Dropdown nach der Navigation offen.
+                                onClick={(e) => e.currentTarget.blur()}
                                 aria-current={pathname === sub.href ? "page" : undefined}
                                 className="block rounded-xs px-3 py-2.5 text-sm font-semibold text-cream/80 transition-colors hover:bg-cream/10 hover:text-cream aria-[current=page]:text-red"
                               >

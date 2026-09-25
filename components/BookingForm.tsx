@@ -7,10 +7,10 @@ import { site } from "@/lib/site";
 import { Arrow } from "./Button";
 
 const steps: { no: string; title: string; hint: string; fields: InquiryField[] }[] = [
-  { no: "01", title: "Wann findet euer Event statt?", hint: "Ein ungefähres Datum reicht erst mal.", fields: ["date"] },
-  { no: "02", title: "Wo?", hint: "Ort oder Location – gern mit Postleitzahl.", fields: ["location"] },
-  { no: "03", title: "Wie viele Gäste?", hint: "Eine grobe Schätzung ist völlig in Ordnung.", fields: ["guests"] },
-  { no: "04", title: "Was plant ihr?", hint: "Anlass und alles, was wir wissen sollten.", fields: ["eventType", "message"] },
+  { no: "01", title: "Was plant ihr?", hint: "Wofür brauchen wir den Truck? Falls es kein Standardanlass ist, genügt „Sonstiges“.", fields: ["eventType"] },
+  { no: "02", title: "Wann findet euer Event statt?", hint: "Ein ungefähres Datum reicht erst mal.", fields: ["date"] },
+  { no: "03", title: "Wo?", hint: "Ort oder Location – gern mit Postleitzahl.", fields: ["location"] },
+  { no: "04", title: "Wie viele Gäste?", hint: "Eine grobe Schätzung ist völlig in Ordnung.", fields: ["guests", "message"] },
   { no: "05", title: "Wie erreichen wir euch?", hint: "Wir melden uns mit Verfügbarkeit und einem Angebot.", fields: ["name", "email", "phone"] },
 ];
 
@@ -54,7 +54,7 @@ export function BookingForm() {
   const [lastErrorState, setLastErrorState] = useState<InquiryState | null>(null);
   const [clientErrors, setClientErrors] = useState<InquiryState["fieldErrors"]>({});
   const formRef = useRef<HTMLFormElement>(null);
-  const headingRefs = useRef<(HTMLHeadingElement | null)[]>([]);
+  const fieldsetRefs = useRef<(HTMLFieldSetElement | null)[]>([]);
   const successRef = useRef<HTMLDivElement>(null);
   const didNavigate = useRef(false);
 
@@ -70,9 +70,23 @@ export function BookingForm() {
     if (state.status === "success") successRef.current?.focus();
   }, [state]);
 
+  // Eventart per URL vorwählen (?anlass=Hochzeit …) – Links von den Eventseiten
+  // und der Anlässe-Liste landen so mit bereits gesetztem Schritt 1.
+  // Nur setzen, solange nichts gewählt ist, damit Server-Werte (Fehlerfälle)
+  // nicht überschrieben werden.
+  useEffect(() => {
+    const anlass = new URLSearchParams(window.location.search).get("anlass");
+    if (!anlass || !(eventOptions as readonly string[]).includes(anlass)) return;
+    const list = formRef.current?.elements.namedItem("eventType");
+    if (list instanceof RadioNodeList && !list.value) list.value = anlass;
+  }, []);
+
+  // Nach Schrittwechsel ins erste Feld des neuen Schritts springen – der
+  // Schritt-Titel wird parallel über die aria-live-Zeile („Schritt X von 5“) angesagt.
   useEffect(() => {
     if (!didNavigate.current) return;
-    headingRefs.current[current]?.focus();
+    const control = fieldsetRefs.current[current]?.querySelector<HTMLElement>("input:not([type='hidden']), textarea");
+    control?.focus();
   }, [current]);
 
   const errors = { ...state.fieldErrors, ...clientErrors };
@@ -88,7 +102,7 @@ export function BookingForm() {
       if (f === "date" && !value) next.date = "Bitte gebt ein Datum an.";
       if (f === "location" && value.length < 2) next.location = "Wo findet euer Event statt?";
       if (f === "guests" && (!value || Number(value) < 1)) next.guests = "Bitte gebt eine ungefähre Gästezahl an.";
-      if (f === "name" && value.length < 2) next.name = "Wie heißt ihr?";
+      if (f === "name" && value.length < 2) next.name = "Wie heißt du?";
       if (f === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) next.email = "Bitte prüft die E-Mail-Adresse.";
     }
     setClientErrors(next);
@@ -158,18 +172,17 @@ export function BookingForm() {
       </div>
 
       {steps.map((step, i) => (
-        <fieldset key={step.no} hidden={mounted && i !== current} className="mb-12 last-of-type:mb-0">
+        <fieldset
+          key={step.no}
+          ref={(el) => {
+            fieldsetRefs.current[i] = el;
+          }}
+          hidden={mounted && i !== current}
+          className="mb-12 last-of-type:mb-0"
+        >
           <legend className="contents">
             <span className="label text-muted">{step.no} / 05</span>
-            <h2
-              ref={(el) => {
-                headingRefs.current[i] = el;
-              }}
-              tabIndex={-1}
-              className="font-display mt-3 text-[clamp(2.4rem,6vw,4rem)] uppercase outline-none"
-            >
-              {step.title}
-            </h2>
+            <h2 className="font-display mt-3 text-[clamp(2.4rem,6vw,4rem)] uppercase">{step.title}</h2>
             <span className="mt-2 block text-ink/70">{step.hint}</span>
           </legend>
 
@@ -206,7 +219,7 @@ export function BookingForm() {
               </Field>
             )}
             {step.fields.includes("guests") && (
-              <Field id="guests" label="Personenzahl" error={errors.guests}>
+              <Field id="guests" label="Anzahl der Personen" error={errors.guests}>
                 <input
                   id="guests"
                   name="guests"
@@ -227,11 +240,11 @@ export function BookingForm() {
                 <p id="eventType-label" className="font-semibold">
                   Art der Veranstaltung <span className="ml-2 text-sm font-normal text-muted">optional</span>
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                   {eventOptions.map((opt) => (
                     <label key={opt} className="cursor-pointer">
                       <input type="radio" name="eventType" value={opt} defaultChecked={v.eventType === opt} className="peer sr-only" />
-                      <span className="inline-flex min-h-11 items-center rounded-xs border border-ink/25 px-4 font-semibold transition-colors hover:border-ink peer-checked:border-ink peer-checked:bg-ink peer-checked:text-cream peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-red">
+                      <span className="flex min-h-11 w-full items-center justify-center rounded-xs border border-ink/25 px-4 text-center font-semibold transition-colors hover:border-ink peer-checked:border-ink peer-checked:bg-ink peer-checked:text-cream peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-red">
                         {opt}
                       </span>
                     </label>

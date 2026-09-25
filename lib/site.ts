@@ -42,11 +42,10 @@ export const site = {
     href: "https://karibischeseck.de/foodtruck/",
   },
 
-  // Der Truck bzw. das Konzept ist seit Jahrzehnten unterwegs – der heutige Inhaber
-  // hat ihn übernommen. Bewusst ohne Jahreszahl: Weder Gründungsjahr noch
-  // Übernahmejahr sind bestätigt.
-  // TODO: Betreiber – Gründungsjahr und Übernahmejahr klären.
-  yearsTagline: "Seit Jahrzehnten unterwegs",
+  // Der Truck wurde übernommen – wie alt er genau ist bzw. seit wann er unterwegs
+  // ist, ist nicht bestätigt. Bewusst ohne Zeitangabe.
+  // TODO: Betreiber – seit wann ist der Truck wirklich unterwegs / wann übernommen?
+  yearsTagline: "Streetfood mit Geschichte",
 
   regions: ["Franken", "Oberpfalz", "Thüringen"],
 
@@ -71,7 +70,13 @@ export const site = {
   social: [] as { label: string; href: string }[],
 } as const;
 
-export const bookingHref = "/foodtruck-buchen";
+// Mit Anker direkt zum Formular (id="anfrage" auf der Buchungsseite).
+export const bookingHref = "/foodtruck-buchen#anfrage";
+
+// Wie bookingHref, aber mit vorab ausgewählter Eventart (?anlass=Hochzeit …).
+// Die Buchungsseite liest den Parameter und setzt Schritt 1 vor.
+export const bookingHrefAnlass = (anlass: string) =>
+  `/foodtruck-buchen?anlass=${encodeURIComponent(anlass)}#anfrage`;
 
 export function absoluteUrl(path = "/") {
   return new URL(path, site.url).toString();

@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/CTASection";
 import { images } from "@/content/images";
 import { companyFaq } from "@/content/faq";
-import { site } from "@/lib/site";
+import { bookingHrefAnlass, site } from "@/lib/site";
 import { businessJsonLd, faqJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -35,8 +35,8 @@ export default function FirmenfeierPage() {
         lead={
           <>
             Sommerfest auf dem Parkplatz, Jubiläum im Hof, Teamevent vor der Halle: Der Landstreicher stellt sich aufs
-            Firmengelände und kocht, wo eure Leute arbeiten. Ihr stellt nur den Stellplatz – steht eine normale
-            Steckdose, nutzen wir sie für die Dunstabzugshaube. Küchenpersonal braucht ihr keins.
+            Firmengelände und kocht, wo eure Leute arbeiten. Ihr stellt nur den Stellplatz – für die
+            Dunstabzugshaube genügt eine normale Steckdose. Küchenpersonal braucht ihr keins.
           </>
         }
         image={images.partyWunderkerzen}
@@ -154,6 +154,7 @@ export default function FirmenfeierPage() {
         title={["Euer", "Sommerfest."]}
         text="Datum, Stellplatz, Gästezahl – mehr brauchen wir für eine erste Einschätzung nicht."
         cta="Firmenfeier anfragen"
+        href={bookingHrefAnlass("Firmenfeier")}
         secondary={{ href: "/speisekarte", label: "Speisekarte ansehen" }}
       />
 

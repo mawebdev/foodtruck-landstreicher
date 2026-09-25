@@ -1,4 +1,5 @@
 import type { ImageKey } from "./images";
+import { bookingHrefAnlass } from "@/lib/site";
 
 /**
  * Eventarten. Die alte Website nennt: Hochzeiten & Polterabende, Geburtstage,
@@ -42,7 +43,7 @@ export const eventTypes: EventType[] = [
     short: "Im Garten, im Hof, in der Scheune.",
     text: "Der runde Geburtstag im Garten, die Party in der Scheune. Ihr kümmert euch um die Gäste, wir um die Burger.",
     image: "kochDreiBurger",
-    href: "/foodtruck-catering#anlaesse",
+    href: bookingHrefAnlass("Geburtstag"),
     cta: "Geburtstag anfragen",
   },
   {
@@ -51,7 +52,7 @@ export const eventTypes: EventType[] = [
     short: "Draußen, lange hell, viele Leute.",
     text: "Sommerfeste leben davon, dass sich alles draußen abspielt. Ein Foodtruck passt da einfach rein – und muss nicht erst ans Stromnetz.",
     image: "truckSeite",
-    href: "/foodtruck-catering#anlaesse",
+    href: bookingHrefAnlass("Sommerfest"),
     cta: "Sommerfest planen",
   },
   {
@@ -60,7 +61,7 @@ export const eventTypes: EventType[] = [
     short: "Jubiläum, Saisonabschluss, Feier.",
     text: "Vereinsjubiläum, Saisonabschluss, Sportfest: Wir übernehmen die Küche, damit die Vereinsmitglieder auch mal selbst feiern können.",
     image: "teamPommes",
-    href: "/foodtruck-catering#anlaesse",
+    href: bookingHrefAnlass("Vereinsfest"),
     cta: "Vereinsfest anfragen",
   },
   {
@@ -69,7 +70,7 @@ export const eventTypes: EventType[] = [
     short: "Straßenfest, Markt, Kerwa.",
     text: "Auf Stadt- und Straßenfesten stehen wir als Streetfood-Stand mitten im Geschehen – Burger auf die Hand, Pommes daneben.",
     image: "burgerHero",
-    href: "/foodtruck-catering#anlaesse",
+    href: bookingHrefAnlass("Stadtfest"),
     cta: "Stadtfest anfragen",
   },
   {
@@ -78,7 +79,7 @@ export const eventTypes: EventType[] = [
     short: "Lange Tage, hungrige Leute.",
     text: "Festivals und Märkte sind lange Tage mit vielen hungrigen Leuten. Genau dafür ist ein Truck gebaut, der mit einer normalen Steckdose auskommt – alles andere ist an Bord.",
     image: "burgerDurchreiche",
-    href: "/foodtruck-catering#anlaesse",
+    href: bookingHrefAnlass("Festival"),
     cta: "Festival anfragen",
   },
 ];
@@ -88,6 +89,7 @@ export const eventOptions = [
   "Hochzeit",
   "Firmenfeier",
   "Geburtstag",
+  "Sommerfest",
   "Vereinsfest",
   "Stadtfest",
   "Festival",

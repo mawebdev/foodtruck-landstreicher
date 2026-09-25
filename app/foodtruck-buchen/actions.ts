@@ -1,5 +1,6 @@
 "use server";
 
+import nodemailer from "nodemailer";
 import { eventOptions } from "@/content/events";
 import { site } from "@/lib/site";
 
@@ -27,7 +28,7 @@ function validate(values: Record<InquiryField, string>) {
   const guests = Number(values.guests);
   if (!values.guests || !Number.isFinite(guests) || guests < 1) errors.guests = "Bitte gebt eine ungefähre Gästezahl an.";
   if (values.eventType && !(eventOptions as readonly string[]).includes(values.eventType)) errors.eventType = "Bitte wählt eine Eventart.";
-  if (values.name.length < 2) errors.name = "Wie heißt ihr?";
+  if (values.name.length < 2) errors.name = "Wie heißt du?";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) errors.email = "Bitte prüft die E-Mail-Adresse.";
   if (values.message.length > 3000) errors.message = "Bitte kürzer als 3000 Zeichen.";
   return errors;
@@ -63,48 +64,52 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
   ].join("\n");
 
   /*
-   * Versand per Resend-API (https://resend.com), ohne zusätzliche Dependency.
-   * Benötigte Umgebungsvariablen:
-   *   RESEND_API_KEY, BOOKING_TO_EMAIL, BOOKING_FROM_EMAIL (verifizierte Absenderdomain)
-   * TODO: Versandweg mit dem Betreiber festlegen (Resend, SMTP, Formspree …).
+   * Versand per SMTP (Zugangsdaten vom Betreiber).
+   * Benötigte Umgebungsvariablen (in .env.local, siehe .env.example):
+   *   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD,
+   *   BOOKING_TO_EMAIL, BOOKING_FROM_EMAIL (Absenderadresse)
    */
-  const apiKey = process.env.RESEND_API_KEY;
+  const host = process.env.SMTP_HOST;
+  const port = Number(process.env.SMTP_PORT ?? 587);
+  const user = process.env.SMTP_USER;
+  const password = process.env.SMTP_PASSWORD;
+  const from = process.env.BOOKING_FROM_EMAIL ?? user;
   const to = process.env.BOOKING_TO_EMAIL ?? site.email;
-  const from = process.env.BOOKING_FROM_EMAIL;
 
-  if (!apiKey || !from) {
+  const sendError: InquiryState = {
+    status: "error",
+    message: `Die Anfrage konnte gerade nicht verschickt werden. Schreibt uns bitte direkt an ${site.email}.`,
+    values,
+  };
+
+  if (!host || !user || !password || !from) {
     if (process.env.NODE_ENV !== "production") {
-      console.info("[Buchungsanfrage – Dev, kein Versand konfiguriert]\n" + text);
+      console.info("[Buchungsanfrage – Dev, kein SMTP konfiguriert]\n" + text);
       return { status: "success" };
     }
-    console.error("Buchungsanfrage: RESEND_API_KEY / BOOKING_FROM_EMAIL fehlen");
-    return {
-      status: "error",
-      message: `Die Anfrage konnte gerade nicht verschickt werden. Schreibt uns bitte direkt an ${site.email}.`,
-      values,
-    };
+    console.error("Buchungsanfrage: SMTP-Zugangsdaten fehlen (SMTP_HOST/SMTP_USER/SMTP_PASSWORD)");
+    return sendError;
   }
 
   try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        reply_to: values.email,
-        subject: `Anfrage: ${values.eventType || "Event"} am ${dateText} – ${values.guests} Gäste`,
-        text,
-      }),
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      // 465 = SMTPS (implizites TLS), alle anderen Ports starten im Klartext und
+      // upgraden per STARTTLS – so verhält es sich nodemailer entsprechend.
+      secure: port === 465,
+      auth: { user, pass: password },
     });
-    if (!res.ok) throw new Error(`Resend ${res.status}`);
+    await transporter.sendMail({
+      from,
+      to,
+      replyTo: values.email,
+      subject: `Anfrage: ${values.eventType || "Event"} am ${dateText} – ${values.guests} Gäste`,
+      text,
+    });
   } catch (err) {
     console.error("Buchungsanfrage fehlgeschlagen", err);
-    return {
-      status: "error",
-      message: `Die Anfrage konnte gerade nicht verschickt werden. Schreibt uns bitte direkt an ${site.email}.`,
-      values,
-    };
+    return sendError;
   }
 
   return { status: "success" };

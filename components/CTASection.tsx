@@ -10,6 +10,8 @@ type Props = {
   title?: ReactNode[];
   text?: string;
   cta?: string;
+  /** Überschreibt das Standard-Buchungsziel, z. B. mit vorab gewählter Eventart */
+  href?: string;
   secondary?: { href: string; label: string };
 };
 
@@ -17,6 +19,7 @@ export function CTASection({
   title = ["Euer Event.", "Unser Truck."],
   text = "Schickt uns Datum, Ort und ungefähre Gästezahl. Den Rest besprechen wir – persönlich und ohne Formularschlacht.",
   cta = "Foodtruck für mein Event anfragen",
+  href = bookingHref,
   secondary = { href: "/speisekarte", label: "Speisekarte ansehen" },
 }: Props) {
   return (
@@ -38,7 +41,7 @@ export function CTASection({
           <Reveal delay={0.1}>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-cream/80">{text}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <ButtonLink href={bookingHref}>{cta}</ButtonLink>
+              <ButtonLink href={href}>{cta}</ButtonLink>
               {secondary && (
                 <ButtonLink href={secondary.href} variant="outline-light">
                   {secondary.label}

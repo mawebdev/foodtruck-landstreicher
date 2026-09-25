@@ -37,7 +37,7 @@ export default function BuchenPage() {
       />
 
       <section className="py-16 md:py-24">
-        <div className="container-site grid gap-14 lg:grid-cols-12 lg:gap-16">
+        <div id="anfrage" className="container-site grid gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Formular */}
           <div className="lg:col-span-7">
             <BookingForm />
@@ -54,7 +54,7 @@ export default function BuchenPage() {
                 </li>
                 <li className="flex gap-3">
                   <span aria-hidden className="text-red">—</span>
-                  <span>Der Truck arbeitet autark – kein Strom- und Wasseranschluss nötig. Steht eine normale Steckdose, nutzen wir sie für die Dunstabzugshaube.</span>
+                  <span>Der Truck arbeitet autark – alles Nötige ist an Bord. Für die Dunstabzugshaube genügt eine normale Steckdose.</span>
                 </li>
                 <li className="flex gap-3">
                   <span aria-hidden className="text-red">—</span>

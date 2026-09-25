@@ -40,7 +40,7 @@ export default function SpeisekartePage() {
         note="alles frisch vom Grill"
       >
         <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/foodtruck-buchen">Menü für euer Event anfragen</ButtonLink>
+          <ButtonLink href="/foodtruck-buchen#anfrage">Menü für euer Event anfragen</ButtonLink>
           <ButtonLink href="/foodtruck-catering" variant="outline-light">
             So läuft das Catering
           </ButtonLink>

@@ -34,7 +34,7 @@ const facts = [
   { title: "Burger & Smoker American BBQ", text: "180 g Rind auf dem Burger, Brisket bis zu 14 Stunden im Smoker." },
   { title: "Vegetarisch", text: "Ein eigener Veggie-Burger – nicht nur Beilagen." },
   { title: "Pommes von Hand", text: "Hausgemacht und handgeschnitten, auch als Süßkartoffel." },
-  { title: "Autark", text: "Kein Stromanschluss nötig – eine normale Steckdose hilft, ist aber kein Muss." },
+  { title: "Autark", text: "Für die Dunstabzugshaube genügt eine normale Steckdose – alles andere ist an Bord." },
   { title: "Klein bis groß", text: "Vom Geburtstag im Garten bis zum Stadtfest." },
 ];
 
@@ -153,12 +153,12 @@ export default function HomePage() {
       <section aria-label="Erfahrung und Fakten" className="grain bg-paper py-20 md:py-28">
         <div className="container-site grid gap-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <Label>Seit Jahrzehnten unterwegs</Label>
+            <Label>Streetfood mit Geschichte</Label>
             <p className="font-display mt-4 text-[clamp(3.5rem,10vw,8rem)] leading-[0.85] uppercase">
               Tradition<span className="text-red">.</span>
             </p>
             <p className="mt-6 max-w-sm text-xl leading-snug">
-              Der Truck selbst hat diese Jahre auf dem Buckel – und genau die Erfahrung steckt in jedem Burger vom Grill.
+              Der Truck wurde nicht neu erfunden: Wir haben ihn übernommen und fahren seine Geschichte weiter.
             </p>
           </Reveal>
           <ul className="grid content-end gap-x-10 sm:grid-cols-2 lg:col-span-7">

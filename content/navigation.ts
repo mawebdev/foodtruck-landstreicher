@@ -22,11 +22,10 @@ export const mainNav: readonly NavItem[] = [
     ],
   },
   {
-    label: "Der Landstreicher",
+    label: "Über uns",
     href: "/ueber-uns",
     match: ["/ueber-uns", "/galerie"],
     children: [
-      { label: "Über uns", href: "/ueber-uns" },
       { label: "Galerie", href: "/galerie" },
     ],
   },
@@ -53,7 +52,7 @@ export const footerNav: readonly NavChild[] = [
   { label: "Einsatzgebiete", href: "/einsatzgebiete" },
   { label: "Über uns", href: "/ueber-uns" },
   { label: "Galerie", href: "/galerie" },
-  { label: "Foodtruck buchen", href: "/foodtruck-buchen" },
+  { label: "Foodtruck buchen", href: "/foodtruck-buchen#anfrage" },
 ];
 
 export const legalNav: readonly NavChild[] = [

@@ -30,7 +30,7 @@ export default function NotFound() {
             Einsatzgebiete
           </Link>{" "}
           ·{" "}
-          <Link href="/foodtruck-buchen" className="prose-link text-cream">
+          <Link href="/foodtruck-buchen#anfrage" className="prose-link text-cream">
             Foodtruck buchen
           </Link>
         </p>

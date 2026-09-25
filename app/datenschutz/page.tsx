@@ -117,7 +117,7 @@ export default function DatenschutzPage() {
           <Section title="5. Hinweis zur Datenweitergabe in die USA">
             <p>
               Für diese Website kommen Dienste von Unternehmen mit Sitz in den USA zum Einsatz: das Hosting
-              (Vercel) und der Versand unserer Anfrage-E-Mails (Resend). Wenn diese Dienste aktiv sind, können
+              (Vercel). Wenn diese Dienste aktiv sind, können
               Ihre personenbezogenen Daten in die USA übertragen und dort verarbeitet werden. Wir weisen darauf
               hin, dass in diesen Ländern kein mit der EU vergleichbares Datenschutzniveau garantiert werden
               kann. Es kann daher nicht ausgeschlossen werden, dass US-Behörden (z. B. Geheimdienste) Ihre auf
@@ -200,7 +200,7 @@ export default function DatenschutzPage() {
           <Section title="10. Buchungsformular">
             <p>
               Wenn Sie uns über unser Buchungsformular eine Anfrage zukommen lassen, werden Ihre Angaben aus dem
-              Formular (Datum, Veranstaltungsort, Personenzahl, Art der Veranstaltung, ggf. weitere
+              Formular (Datum, Veranstaltungsort, Anzahl der Personen, Art der Veranstaltung, ggf. weitere
               Informationen) inklusive der von Ihnen dort angegebenen Kontaktdaten (Name, E-Mail-Adresse, ggf.
               Telefonnummer) zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns
               gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
@@ -213,8 +213,9 @@ export default function DatenschutzPage() {
               (Art. 6 Abs. 1 lit. f DSGVO).
             </p>
             <p>
-              <strong>Versand der Anfrage-E-Mail:</strong> Die Inhalte Ihrer Anfrage werden über den Dienst
-              Resend (Resend, Inc., USA) an unsere E-Mail-Adresse übermittelt und als E-Mail zugestellt.
+              <strong>Versand der Anfrage-E-Mail:</strong> Die Inhalte Ihrer Anfrage werden per E-Mail über
+              unseren E-Mail-Server (SMTP) an uns übermittelt und dort zugestellt.
+              {/* TODO: Betreiber – E-Mail-Anbieter/Hoster nennen, falls in der DSGVO-Erklärung angegeben werden soll. */}
               Zur Absicherung des Formulars gegen automatisierte Spam-Einträge verwenden wir ein unsichtbares
               Feld, das nur von Spam-Bots ausgefüllt wird (ein sogenanntes Honeypot). Dabei werden keine Daten
               an Dritte übermittelt und es findet keine Verhaltensanalyse statt.

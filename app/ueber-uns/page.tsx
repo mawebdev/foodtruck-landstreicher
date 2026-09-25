@@ -14,7 +14,7 @@ import { businessJsonLd, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Über den Landstreicher – Foodtruck & Streetfood aus Lichtenfels",
   description:
-    "Wer hinter dem Landstreicher steckt: ein Foodtruck-Betrieb aus Lichtenfels mit drei Trucks und einer Karte aus Burgern, BBQ und Streetfood. Der Truck selbst ist seit Jahrzehnten unterwegs.",
+    "Wer hinter dem Landstreicher steckt: ein Foodtruck-Betrieb aus Lichtenfels mit drei Trucks und einer Karte aus Burgern, BBQ und Streetfood. Der Truck selbst wurde übernommen.",
   path: "/ueber-uns",
   image: "/images/koch-mit-zwei-burgern.jpg",
 });
@@ -54,7 +54,7 @@ export default function UeberUnsPage() {
                 </p>
                 <p>
                   Der Truck ist älter als das heutige Team hinter dem Fenster: Er wurde übernommen, nicht neu
-                  erfunden. {site.yearsTagline} – und in all der Zeit geht es um dasselbe: gutes Essen, frisch
+                  erfunden. {site.yearsTagline} – und im Kern geht es immer um dasselbe: gutes Essen, frisch
                   gemacht, und Leute, die zufrieden nach Hause gehen. Was sich geändert hat, ist der Rahmen – vom
                   festen Standort zum Truck, der zu Hochzeiten, Firmenfeiern und Festen in der Region rollt.
                 </p>
@@ -130,7 +130,7 @@ export default function UeberUnsPage() {
             intro="Am besten lernt man uns kennen, wenn es riecht. Fragt den Truck für euer Event an – oder schaut vorher auf der Speisekarte, was euch erwartet."
           />
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/foodtruck-buchen">Foodtruck anfragen</ButtonLink>
+            <ButtonLink href="/foodtruck-buchen#anfrage">Foodtruck anfragen</ButtonLink>
             <ButtonLink href="/speisekarte" variant="outline">
               Speisekarte ansehen
             </ButtonLink>

@@ -34,7 +34,8 @@ export default function CateringPage() {
         lead={
           <>
             Der Landstreicher ist keine mobile Wurstbude. Er ist eine Küche auf Rädern – und auf eurem Event kocht er,
-            wo eure Gäste stehen: frisch, laut und gut riechend. Ihr braucht dafür weder Strom noch Wasser.
+            wo eure Gäste stehen: frisch, laut und gut riechend. Ihr stellt nur den Stellplatz – für die
+            Dunstabzugshaube genügt eine normale Steckdose.
           </>
         }
         image={images.eventTafel}
@@ -63,7 +64,7 @@ export default function CateringPage() {
               {[
                 {
                   title: "Autark",
-                  text: "Der Truck braucht keinen festen Strom- oder Wasseranschluss – alles Nötige ist an Bord. Steht eine normale Steckdose, nutzen wir sie für die Dunstabzugshaube.",
+                  text: "Der Truck arbeitet autark – alles Nötige ist an Bord. Für die Dunstabzugshaube genügt eine normale Steckdose.",
                 },
                 {
                   title: "Frisch vor Ort",

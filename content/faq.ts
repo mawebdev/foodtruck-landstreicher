@@ -47,7 +47,7 @@ export const generalFaq: Faq[] = [
   {
     q: "Braucht der Foodtruck Strom oder Wasser vor Ort?",
     a: [
-      "Nein. Der Truck arbeitet autark – alles Nötige ist an Bord. Steht eine normale Steckdose bereit, nutzen wir sie gern für die Dunstabzugshaube.",
+      "Für die Dunstabzugshaube genügt eine normale Steckdose – alles andere ist an Bord. Mehr braucht es vor Ort nicht.",
       "An Platz braucht der Truck rund 7,5 × 2,5 m auf einem festen, befahrbaren Untergrund. Das macht uns auf Wiesen, Höfen oder Parkplätzen flexibel.",
     ],
   },
@@ -87,7 +87,7 @@ export const weddingFaq: Faq[] = [
   {
     q: "Brauchen wir am Veranstaltungsort Strom oder Wasser?",
     a: [
-      "Nein, der Truck arbeitet autark – eine normale Steckdose für die Dunstabzugshaube genügt, alles andere ist an Bord. Das ist bei Scheunen, Gutshöfen oder Gärten oft ein echter Vorteil.",
+      "Eine normale Steckdose für die Dunstabzugshaube genügt – alles andere ist an Bord. Das ist bei Scheunen, Gutshöfen oder Gärten oft ein echter Vorteil.",
     ],
   },
   {

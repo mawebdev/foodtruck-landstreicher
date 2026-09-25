@@ -90,7 +90,7 @@ export default function EinsatzgebietePage() {
                       </>
                     )}
                     Für alle Orte gilt: {region === "Oberpfalz" ? "längere Anfahrt" : "Nahbereich"} –{" "}
-                    <Link href="/foodtruck-buchen" className="prose-link">
+                    <Link href="/foodtruck-buchen#anfrage" className="prose-link">
                       fragt einfach an
                     </Link>
                     .
