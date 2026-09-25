@@ -1,6 +1,5 @@
 "use server";
 
-import path from "node:path";
 import nodemailer from "nodemailer";
 import { eventOptions } from "@/content/events";
 import { site } from "@/lib/site";
@@ -79,8 +78,9 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
 
   /*
    * HTML-Mail im Look der Website (Cream #F4F0E8, Ink #111111, Rot #A71919).
-   * Das Logo hängt als CID-Anhang bei, damit es in gängigen Mail-Clients
-   * ohne externes Nachladen angezeigt wird. Tabellen-Layout + Inline-Styles,
+   * Das Logo wird von der Website geladen statt als CID-Anhang mitgeschickt –
+   * sonst zeigen viele Clients (Apple Mail, Outlook, teils Gmail) es zusätzlich
+   * als Dateianhang an. Tabellen-Layout + Inline-Styles,
    * weil die meisten Clients kein <style> aus dem Head übernehmen.
    */
   const rowHtml = (pair: [string, string]) =>
@@ -93,7 +93,7 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
     <!-- Logo-Kopf auf dunklem Grund: das Logo ist weiße Grafik und braucht einen
          dunklen Hintergrund, um sichtbar zu sein (wie auf dem Truck). -->
     <tr><td style="padding:36px 40px 28px;background:#111111;" align="center">
-      <img src="cid:logo" alt="Der Landstreicher – Foodtruck &amp; Catering" width="110" height="111" style="display:block;border:0;" />
+      <img src="${site.url}/brand/logo-landstreicher.png" alt="Der Landstreicher – Foodtruck &amp; Catering" width="110" height="111" style="display:block;border:0;" />
       <div style="margin-top:14px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#F4F0E8;">Foodtruck &middot; Catering</div>
     </td></tr>
     <tr><td style="padding:28px 40px 8px;font-family:Arial,Helvetica,sans-serif;">
@@ -169,13 +169,6 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
       subject: `Anfrage: ${values.eventType || "Event"} am ${dateText} – ${values.guests} Gäste`,
       text,
       html,
-      attachments: [
-        {
-          filename: "logo-landstreicher.png",
-          path: path.join(process.cwd(), "public", "brand", "logo-landstreicher.png"),
-          cid: "logo",
-        },
-      ],
     });
   } catch (err) {
     console.error("Buchungsanfrage fehlgeschlagen", err);
