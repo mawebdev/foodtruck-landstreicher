@@ -1,0 +1,14 @@
+{
+  "id": "session-1790350350905",
+  "startedAt": "2026-09-25T15:32:30.905Z",
+  "cwd": "/Users/milaim.ajdari/dev/valimero/foodtruck-landstreicher",
+  "context": {},
+  "metrics": {
+    "edits": 0,
+    "commands": 0,
+    "tasks": 0,
+    "errors": 0
+  },
+  "endedAt": "2026-09-25T15:32:33.472Z",
+  "duration": 2567
+}
