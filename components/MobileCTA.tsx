@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { bookingHref } from "@/lib/site";
+import { bookingHref, bookingPath } from "@/lib/site";
 import { Arrow } from "./Button";
 
 /**
@@ -21,7 +21,8 @@ export function MobileCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname.startsWith(bookingHref)) return null;
+  // pathname enthält nie den Hash – deshalb bookingPath vergleichen, nicht bookingHref.
+  if (pathname.startsWith(bookingPath)) return null;
 
   return (
     <div

@@ -4,7 +4,7 @@ import { useActionState, useEffect, useRef, useState, useSyncExternalStore, type
 import { submitInquiry, type InquiryField, type InquiryState } from "@/app/foodtruck-buchen/actions";
 import { eventOptions } from "@/content/events";
 import { site } from "@/lib/site";
-import { Arrow } from "./Button";
+import { Arrow, ButtonLink } from "./Button";
 
 const steps: { no: string; title: string; hint: string; fields: InquiryField[] }[] = [
   { no: "01", title: "Was plant ihr?", hint: "Wofür brauchen wir den Truck? Falls es kein Standardanlass ist, genügt „Sonstiges“.", fields: ["eventType"] },
@@ -53,6 +53,8 @@ export function BookingForm() {
   /** letzter vom Server gemeldeter Fehlerstand – um Sprünge während des Renderns zu deduplizieren */
   const [lastErrorState, setLastErrorState] = useState<InquiryState | null>(null);
   const [clientErrors, setClientErrors] = useState<InquiryState["fieldErrors"]>({});
+  /** Felder, die seit dem letzten Validierungsversuch bearbeitet wurden – deren Fehler werden ausgeblendet */
+  const [edited, setEdited] = useState<ReadonlySet<string>>(new Set());
   const formRef = useRef<HTMLFormElement>(null);
   const fieldsetRefs = useRef<(HTMLFieldSetElement | null)[]>([]);
   const successRef = useRef<HTMLDivElement>(null);
@@ -89,8 +91,23 @@ export function BookingForm() {
     control?.focus();
   }, [current]);
 
-  const errors = { ...state.fieldErrors, ...clientErrors };
+  const rawErrors = { ...state.fieldErrors, ...clientErrors };
+  const errors = Object.fromEntries(Object.entries(rawErrors).filter(([field]) => !edited.has(field)));
   const v = state.values ?? {};
+
+  // Tippen in einem Feld nimmt dessen Fehlermeldung zurück (auch Server-Fehler);
+  // beim nächsten „Weiter“/Absenden validiert es neu und zeigt ggf. wieder an.
+  function handleEdit(e: React.FormEvent<HTMLFormElement>) {
+    const field = (e.target as HTMLElement).getAttribute?.("name");
+    if (!field) return;
+    setEdited((prev) => (prev.has(field) ? prev : new Set(prev).add(field)));
+    setClientErrors((prev) => {
+      if (!prev || !(field in prev)) return prev;
+      const rest: InquiryState["fieldErrors"] = { ...prev };
+      delete rest[field as InquiryField];
+      return rest;
+    });
+  }
 
   function validateStep(index: number) {
     const form = formRef.current;
@@ -106,6 +123,7 @@ export function BookingForm() {
       if (f === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) next.email = "Bitte prüft die E-Mail-Adresse.";
     }
     setClientErrors(next);
+    setEdited(new Set());
     return Object.keys(next).length === 0;
   }
 
@@ -128,6 +146,9 @@ export function BookingForm() {
         <p className="mt-4 text-ink/70">
           Falls noch etwas einfällt: <a className="prose-link" href={`mailto:${site.email}`}>{site.email}</a>
         </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <ButtonLink href="/">Zurück zur Startseite</ButtonLink>
+        </div>
       </div>
     );
   }
@@ -135,7 +156,7 @@ export function BookingForm() {
   const isLast = current === steps.length - 1;
 
   return (
-    <form ref={formRef} action={formAction} noValidate={mounted} className="relative" aria-describedby="form-note">
+    <form ref={formRef} action={formAction} noValidate={mounted} onChange={handleEdit} className="relative" aria-describedby="form-note">
       {/* Fortschritt */}
       {mounted && (
         <div className="mb-10">

@@ -73,6 +73,9 @@ export const site = {
 // Mit Anker direkt zum Formular (id="anfrage" auf der Buchungsseite).
 export const bookingHref = "/foodtruck-buchen#anfrage";
 
+// Nackter Pfad – für pathname-Vergleiche (pathname enthält nie den Hash).
+export const bookingPath = "/foodtruck-buchen";
+
 // Wie bookingHref, aber mit vorab ausgewählter Eventart (?anlass=Hochzeit …).
 // Die Buchungsseite liest den Parameter und setzt Schritt 1 vor.
 export const bookingHrefAnlass = (anlass: string) =>
