@@ -34,7 +34,7 @@ export type MenuCategory = {
 };
 
 export const burgerBase =
-  "Jeder Burger startet mit 180 g Rindfleisch, sonnengereiften Tomaten, roten Zwiebeln und frischem Pflücksalat.";
+  "Jeder Homemade Burger startet mit frischem Rindfleisch, sonnengereiften Tomaten, roten Zwiebeln und frischem Pflücksalat.";
 
 export const menuCategories: MenuCategory[] = [
   {
@@ -88,7 +88,7 @@ export const menuCategories: MenuCategory[] = [
       {
         name: "Veggie-Burger",
         description:
-          "150 g Patty auf Weizenprotein-Basis mit getrockneten Tomaten, Heumilchkäse und Rauke. Dazu hausgemachte, handgeschnittene Pommes.",
+          "Patty auf Weizenprotein-Basis mit getrockneten Tomaten, Heumilchkäse und Rauke. Dazu hausgemachte, handgeschnittene Pommes.",
         vegetarian: true,
       },
     ],
@@ -109,7 +109,7 @@ export const menuCategories: MenuCategory[] = [
     id: "smoker",
     title: "Smoker American BBQ",
     kicker: "Low & Slow",
-    intro: "Aus dem US-Smoker. Das braucht Zeit – deshalb planen wir BBQ immer mit etwas Vorlauf.",
+    intro: "Echtes American BBQ aus dem Offset-Smoker. Das braucht Zeit – deshalb planen wir BBQ immer mit etwas Vorlauf.",
     items: [
       {
         name: "Texas Brisket",

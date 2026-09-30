@@ -1,4 +1,19 @@
+import Link from "next/link";
 import type { Faq } from "@/content/faq";
+
+/** Wandelt [Text](/pfad) in einer Antwort in interne Links um. */
+function renderAnswer(text: string) {
+  return text.split(/(\[[^\]]+\]\([^)]+\))/).map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    return m ? (
+      <Link key={i} href={m[2]} className="prose-link">
+        {m[1]}
+      </Link>
+    ) : (
+      part
+    );
+  });
+}
 
 /**
  * FAQ mit nativem <details>: tastaturbedienbar, ohne JavaScript,
@@ -18,7 +33,7 @@ export function FAQ({ items, className = "" }: { items: Faq[]; className?: strin
           </summary>
           <div className="max-w-prose space-y-3 pb-7 leading-relaxed opacity-85">
             {item.a.map((p) => (
-              <p key={p}>{p}</p>
+              <p key={p}>{renderAnswer(p)}</p>
             ))}
           </div>
         </details>

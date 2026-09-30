@@ -1,13 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/CTASection";
+import { CityCard } from "@/components/CityCard";
 import { SlashLabel } from "@/components/Label";
 import { images } from "@/content/images";
-import { distanceFromHome, getLocationPage, serviceAreas } from "@/content/locations";
+import { getLocationPage, serviceAreas } from "@/content/locations";
 import { businessJsonLd, faqJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -23,9 +23,6 @@ export function locationMetadata(slug: string): Metadata {
 
 export function LocationPageView({ slug }: { slug: string }) {
   const page = getLocationPage(slug);
-  const heroImage = images[page.image];
-  const secondaryImage = images[page.imageSecondary];
-  const km = distanceFromHome(page.city);
   const nearbyPages = serviceAreas.filter((a) => a.slug && page.nearby.includes(a.name));
 
   return (
@@ -36,8 +33,6 @@ export function LocationPageView({ slug }: { slug: string }) {
         h1={page.h1}
         display={[<span key="rot" className="text-red">{page.city}.</span>]}
         lead={page.lead}
-        image={heroImage}
-        note={km ? `ca. ${km} km von uns` : undefined}
       />
 
       {/* Einsatz in … */}
@@ -53,14 +48,10 @@ export function LocationPageView({ slug }: { slug: string }) {
               </div>
             </div>
             <div className="lg:col-span-5 lg:col-start-8">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xs">
-                <Image src={secondaryImage.src} alt={secondaryImage.alt} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+              <CityCard city={page.city} />
+              <div className="mt-4">
+                <SlashLabel items={["Start in Lichtenfels", "Anfahrt im Angebot enthalten"]} />
               </div>
-              {km && (
-                <div className="mt-4">
-                  <SlashLabel items={[`${page.city}`, `ca. ${km} km Luftlinie von Lichtenfels`, "Anfahrt im Angebot enthalten"]} />
-                </div>
-              )}
             </div>
           </div>
         </div>

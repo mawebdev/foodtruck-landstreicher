@@ -14,9 +14,9 @@ import { generalFaq } from "@/content/faq";
 import { businessJsonLd, faqJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Foodtruck-Catering für euer Event – frisch, autark, unkompliziert",
+  title: "Foodtruck-Catering für euer Event – frisch, unkompliziert, alles an Bord",
   description:
-    "Foodtruck-Catering vom Landstreicher: Burger und BBQ frisch vor Ort zubereitet, autark – eine normale Steckdose genügt. Für Hochzeiten, Firmenfeiern, Feste in Franken, der Oberpfalz und Thüringen.",
+    "Foodtruck-Catering vom Landstreicher: frische Burger und echtes American BBQ aus dem Offset-Smoker, vor Ort serviert, alles an Bord – eine normale Steckdose genügt. Für Hochzeiten, Firmenfeiern, Feste in Franken, der Oberpfalz und Thüringen.",
   path: "/foodtruck-catering",
   image: "/images/event-lange-tafel-abend.jpg",
 });
@@ -55,7 +55,7 @@ export default function CateringPage() {
             <div className="lg:col-span-5">
               <SectionHeading
                 label="Warum ein Truck?"
-                title={<>Autark. Frisch. <span className="text-red">Laut.</span></>}
+                title={<>Alles an Bord. Frisch. <span className="text-red">Mittendrin.</span></>}
                 size="md"
                 intro="Ein Truck ändert, wie ein Event klingt: Es sammelt sich dort, wo gekocht wird. Und ihr spart euch die Diskussion über Catering-Container, Stromverteiler und Kaltstellbuffets."
               />
@@ -63,12 +63,12 @@ export default function CateringPage() {
             <ul className="grid gap-8 sm:grid-cols-2 lg:col-span-6 lg:col-start-7 lg:content-start">
               {[
                 {
-                  title: "Autark",
-                  text: "Der Truck arbeitet autark – alles Nötige ist an Bord. Für die Dunstabzugshaube genügt eine normale Steckdose.",
+                  title: "Alles an Bord",
+                  text: "Der Truck bringt alles Nötige mit. Von euch brauchen wir nur eine normale Steckdose für die Dunstabzugshaube.",
                 },
                 {
                   title: "Frisch vor Ort",
-                  text: "Patties auf die Platte, Pommes selbst geschnitten, Brisket aus dem Smoker. Nichts wird angeliefert und warmgehalten.",
+                  text: "Patties auf die Platte, Pommes hausgemacht und handgeschnitten, Brisket und Beef Cheeks aus dem Offset-Smoker. Nichts wird angeliefert und warmgehalten.",
                 },
                 {
                   title: "Menü nach euch",
@@ -133,7 +133,7 @@ export default function CateringPage() {
       {/* Stimmen */}
       <section className="py-16 md:py-24">
         <div className="container-site">
-          <SectionHeading label="Gäste" title="Was gesagt wurde" size="md" className="mb-12" />
+          <SectionHeading label="Stimmen" title="Das sagen unsere Gäste" size="md" className="mb-12" />
           <Testimonials />
           <p className="mt-10 text-sm opacity-60">
             Zitate von der alten Buchungsseite. {/* TODO: Betreiber bestätigen, von welchen Events die Zitate stammen. */}
@@ -161,7 +161,7 @@ export default function CateringPage() {
           serviceJsonLd({
             name: "Foodtruck-Catering",
             description:
-              "Foodtruck-Catering für Hochzeiten, Firmenfeiern, Geburtstage und Events: Burger, BBQ aus dem Smoker und Streetfood, frisch vor Ort zubereitet. Autark – eine normale Steckdose genügt.",
+              "Foodtruck-Catering für Hochzeiten, Firmenfeiern, Geburtstage und Events: frische Burger, American BBQ aus dem Offset-Smoker und Streetfood, frisch vor Ort zubereitet. Alles an Bord – eine normale Steckdose genügt.",
             path: "/foodtruck-catering",
           }),
           faqJsonLd(generalFaq),

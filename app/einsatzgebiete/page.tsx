@@ -84,14 +84,9 @@ export default function EinsatzgebietePage() {
                     ))}
                   </ul>
                   <p className="mt-4 text-sm opacity-60">
-                    {cities.filter((c) => c.slug).length > 0 && (
-                      <>
-                        Unterstrichene Städte haben eine eigene Seite.{" "}
-                      </>
-                    )}
-                    Für alle Orte gilt: {region === "Oberpfalz" ? "längere Anfahrt" : "Nahbereich"} –{" "}
+                    Euer Ort ist nicht dabei?{" "}
                     <Link href="/foodtruck-buchen#anfrage" className="prose-link">
-                      fragt einfach an
+                      Fragt einfach an
                     </Link>
                     .
                   </p>

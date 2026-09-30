@@ -13,9 +13,9 @@ import { menuCategories } from "@/content/menu";
 import { businessJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Speisekarte – Burger, BBQ & Streetfood vom Foodtruck",
+  title: "Speisekarte – Burger, American BBQ & Streetfood vom Foodtruck",
   description:
-    "Die Speisekarte vom Landstreicher: 14 Burger mit 180 g Rindfleisch, BBQ aus dem US-Smoker, hausgemachte Pommes, vegetarische Optionen und Desserts. Menüs werden pro Event zusammengestellt.",
+    "Die Speisekarte vom Landstreicher: 14 Homemade Burger, American BBQ aus dem Offset-Smoker, hausgemachte Pommes, vegetarische Optionen und Desserts. Menüs werden pro Event zusammengestellt.",
   path: "/speisekarte",
   image: "/images/smoker.jpg",
 });
@@ -32,7 +32,7 @@ export default function SpeisekartePage() {
         display={["Was bieten", <span key="rot" className="text-red">wir an?</span>]}
         lead={
           <>
-            Burger mit 180 g Rindfleisch, BBQ aus dem US-Smoker, hausgemachte Pommes und Dessert wie bei Oma. Die Karte
+            Homemade Burger, Brisket, Pulled Pork und Beef Cheeks aus dem Offset-Smoker, hausgemachte Pommes und Dessert wie bei Oma. Die Karte
             ist unser Fundament – für euer Event stellen wir daraus das Menü zusammen, das zu euch passt.
           </>
         }

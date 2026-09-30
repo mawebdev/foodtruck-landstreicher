@@ -13,7 +13,7 @@ import { businessJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Foodtruck für Events – Hochzeit, Firmenfeier & mehr",
   description:
-    "Der Landstreicher für euer Event: Hochzeit, Firmenfeier, Geburtstag, Vereinsfest, Stadtfest oder Festival – frisch gekocht im Truck, autark vor Ort, eine normale Steckdose genügt.",
+    "Der Landstreicher für euer Event: Hochzeit, Firmenfeier, Geburtstag, Vereinsfest, Stadtfest oder Festival – frisch gekocht im Truck, alles an Bord, eine normale Steckdose genügt.",
   path: "/events",
   image: "/images/event-lange-tafel-abend.jpg",
 });
@@ -36,7 +36,7 @@ export default function EventsPage() {
         lead={
           <>
             Ob Hochzeit in der Scheune, Sommerfest auf dem Hof oder Stadtfest in der Altstadt: Wir rollen an,
-            stellen den Truck hin und kochen vor Ort – autark, mitten im Geschehen. Eine normale Steckdose genügt.
+            stellen den Truck hin und kochen vor Ort – mitten im Geschehen, alles an Bord. Eine normale Steckdose genügt.
           </>
         }
         image={images.eventTafel}
@@ -55,7 +55,7 @@ export default function EventsPage() {
             {featuredEvents.map((event, i) => {
               const img = images[event.image];
               return (
-                <Link key={event.id} href={event.href} className={`group block ${i === 1 ? "md:mt-16" : ""}`}>
+                <Link key={event.id} href={event.href} className="group block">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xs">
                     <Image
                       src={img.src}

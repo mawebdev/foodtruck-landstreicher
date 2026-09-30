@@ -59,11 +59,11 @@ export default function FirmenfeierPage() {
               {[
                 {
                   title: "Ein fester Platz reicht",
-                  text: "Der Truck arbeitet autark – alles Nötige ist an Bord. Für die Dunstabzugshaube genügt eine normale Steckdose. Parkplatz, Hof, Wiese zwischen den Hallen – ihr stellt keine Infrastruktur, nur den Stellplatz (rund " + site.footprint + ").",
+                  text: "Der Truck bringt alles Nötige mit. Von euch brauchen wir nur eine normale Steckdose für die Dunstabzugshaube. Parkplatz, Hof, Wiese zwischen den Hallen – ihr stellt keine Infrastruktur, nur den Stellplatz (rund " + site.footprint + ").",
                 },
                 {
                   title: "Zügig auch bei vielen Gästen",
-                  text: "Bis zu 600 Portionen Burger und Pommes pro Stunde sind drin. Bei großen Gruppen stimmen wir zusätzlich Menü und Ablauf auf Tempo: kompakte Auswahl, BBQ, das sich schnell portionieren lässt.",
+                  text: "Bis zu 320 Portionen pro Stunde sind drin. Bei großen Gruppen stimmen wir zusätzlich Menü und Ablauf auf Tempo: kompakte Auswahl, BBQ, das sich schnell portionieren lässt.",
                 },
                 {
                   title: "Angebot für die Firma",
@@ -71,7 +71,7 @@ export default function FirmenfeierPage() {
                 },
                 {
                   title: "Menü nach Anlass",
-                  text: "Sommerfest mit Burgern, Weihnachtsfeier mit American BBQ, Eröffnung mit Burger auf die Hand: Wir richten die Karte nach eurem Anlass.",
+                  text: "Sommerfest mit Burgern, Weihnachtsfeier mit Brisket und Pulled Pork aus dem Offset-Smoker, Eröffnung mit Burger auf die Hand: Wir richten die Karte nach eurem Anlass.",
                 },
               ].map((f) => (
                 <li key={f.title} className="border-t-2 border-red pt-5">
@@ -164,7 +164,7 @@ export default function FirmenfeierPage() {
           serviceJsonLd({
             name: "Firmencatering mit dem Foodtruck",
             description:
-              "Foodtruck-Catering für Firmenfeiern, Sommerfeste, Teamevents und Jubiläen: Burger, BBQ und Streetfood frisch auf dem Firmengelände zubereitet. Autark – eine normale Steckdose genügt.",
+              "Foodtruck-Catering für Firmenfeiern, Sommerfeste, Teamevents und Jubiläen: frische Burger und American BBQ aus dem Offset-Smoker, serviert auf dem Firmengelände. Alles an Bord – eine normale Steckdose genügt.",
             path: "/foodtruck-firmenfeier",
           }),
           faqJsonLd(companyFaq),

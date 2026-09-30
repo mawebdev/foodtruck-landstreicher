@@ -11,6 +11,8 @@ export type FoodCategoryTeaser = {
   /** Typografischer Platzhalter, solange kein echtes Foto existiert */
   placeholderWords?: string[];
   imagePosition?: string;
+  /** Für helle Fotos: kräftigerer Verlauf, damit der Text lesbar bleibt */
+  strongOverlay?: boolean;
 };
 
 /**
@@ -43,7 +45,12 @@ export function FoodCard({ item, className = "", sizes = "(min-width: 1024px) 40
             ))}
           </div>
         )}
-        <div aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/10 to-transparent" />
+        <div
+          aria-hidden
+          className={`absolute inset-0 bg-linear-to-t ${
+            item.strongOverlay ? "from-ink/95 via-ink/60 to-ink/20" : "from-ink/85 via-ink/10 to-transparent"
+          }`}
+        />
       </div>
       <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
         <span className="label text-cream/60">{item.no}</span>

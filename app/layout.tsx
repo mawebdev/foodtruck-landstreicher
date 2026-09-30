@@ -33,11 +33,11 @@ const hand = Caveat_Brush({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Foodtruck „Der Landstreicher“ | Streetfood & Catering",
+    default: "Foodtruck „Der Landstreicher“ | Burger, American BBQ & Catering",
     template: "%s | Der Landstreicher",
   },
   description:
-    "Der Landstreicher bringt frische Burger, BBQ und Streetfood direkt zu eurem Event. Foodtruck-Catering für Hochzeiten, Firmenfeiern und Veranstaltungen in Franken, der Oberpfalz und Thüringen.",
+    "Der Landstreicher bringt frische Burger und echtes American BBQ aus dem Offset-Smoker direkt zu eurem Event. Foodtruck-Catering für Hochzeiten, Firmenfeiern und Veranstaltungen in Franken, der Oberpfalz und Thüringen.",
   applicationName: site.name,
   authors: [{ name: site.name }],
   formatDetection: { telephone: false },

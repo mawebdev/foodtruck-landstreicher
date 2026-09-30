@@ -31,8 +31,8 @@ export default function BuchenPage() {
             melden wir uns persönlich mit Verfügbarkeit und einem Angebot.
           </>
         }
-        image={images.truckFront}
-        imagePosition="center 40%"
+        image={images.truckKies}
+        wideImage
         note="der Truck wartet schon"
       />
 
@@ -54,7 +54,7 @@ export default function BuchenPage() {
                 </li>
                 <li className="flex gap-3">
                   <span aria-hidden className="text-red">—</span>
-                  <span>Der Truck arbeitet autark – alles Nötige ist an Bord. Für die Dunstabzugshaube genügt eine normale Steckdose.</span>
+                  <span>Der Truck bringt alles Nötige mit. Von euch brauchen wir nur eine normale Steckdose für die Dunstabzugshaube.</span>
                 </li>
                 <li className="flex gap-3">
                   <span aria-hidden className="text-red">—</span>
@@ -66,7 +66,7 @@ export default function BuchenPage() {
                 </li>
                 <li className="flex gap-3">
                   <span aria-hidden className="text-red">—</span>
-                  <span>Auch kurzfristige Anfragen lohnen sich – mit drei Trucks sind wir flexibel. Für Samstage in der Saison gilt trotzdem: je früher, desto besser.</span>
+                  <span>Auch kurzfristige Anfragen lohnen sich – mit zwei Trucks und einem Offset-Smoker sind wir flexibel. Für Samstage in der Saison gilt trotzdem: je früher, desto besser.</span>
                 </li>
               </ul>
             </div>
@@ -117,7 +117,7 @@ export default function BuchenPage() {
           serviceJsonLd({
             name: "Foodtruck buchen",
             description:
-              "Buchungsanfrage für den Foodtruck Der Landstreicher: Burger, BBQ und Streetfood für Hochzeiten, Firmenfeiern und Events in Franken, der Oberpfalz und Thüringen.",
+              "Buchungsanfrage für den Foodtruck Der Landstreicher: frische Burger und American BBQ aus dem Offset-Smoker für Hochzeiten, Firmenfeiern und Events in Franken, der Oberpfalz und Thüringen.",
             path: "/foodtruck-buchen",
           }),
         ]}

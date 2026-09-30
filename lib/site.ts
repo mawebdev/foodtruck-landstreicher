@@ -42,22 +42,23 @@ export const site = {
     href: "https://karibischeseck.de/foodtruck/",
   },
 
-  // Der Truck wurde übernommen – wie alt er genau ist bzw. seit wann er unterwegs
-  // ist, ist nicht bestätigt. Bewusst ohne Zeitangabe.
-  // TODO: Betreiber – seit wann ist der Truck wirklich unterwegs / wann übernommen?
   yearsTagline: "Streetfood mit Geschichte",
+
+  // Laut Betreiber (Sep. 2026): Truck ist 34 Jahre alt, aus den USA importiert
+  // und selbst zur mobilen Küche umgebaut. Jährlich prüfen/anpassen.
+  truckAge: 34,
 
   regions: ["Franken", "Oberpfalz", "Thüringen"],
 
-  // Laut Betreiber (Sep. 2026): Gründungsjahr des heutigen Betriebs. Der Truck
-  // selbst ist älter und wurde übernommen.
+  // Laut Betreiber (Sep. 2026): Gründungsjahr des heutigen Betriebs.
   foundedYear: 2016,
 
-  // Laut Betreiber (Sep. 2026).
-  capacityPerHour: "bis zu 600 Portionen Burger & Pommes pro Stunde",
+  // Laut Betreiber (Sep. 2026, korrigiert von 600 auf 320).
+  capacityPerHour: "bis zu 320 Portionen pro Stunde",
   footprint: "7,5 × 2,5 m",
 
   // „Da wir 3 Trucks haben, sind wir flexibel“ (Betreiber, Sep. 2026).
+  // Korrigiert: 2 Trucks + 1 Offset-Smoker auf Anhänger.
   fleetSize: 3,
 
   // Mindestumsatz: laut Betreiber pauschal nicht angebbar – abhängig von

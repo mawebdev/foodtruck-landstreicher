@@ -19,7 +19,7 @@ type PageMetaInput = {
  * gepflegt statt pauschal.
  */
 const ogImageDims: Record<string, { width: number; height: number }> = {
-  "/images/burger-heumilchkaese-rauke.jpg": { width: 1920, height: 1440 },
+  "/images/burger-heumilchkaese-rauke-v2.jpg": { width: 1448, height: 1086 },
   "/images/truck-landstreicher-front.jpg": { width: 1920, height: 1440 },
   "/images/event-lange-tafel-abend.jpg": { width: 1920, height: 1440 },
   "/images/hochzeitspaar-burger.jpg": { width: 1600, height: 1066 },
@@ -32,7 +32,7 @@ export function pageMetadata({
   title,
   description,
   path,
-  image = "/images/burger-heumilchkaese-rauke.jpg",
+  image = "/images/burger-heumilchkaese-rauke-v2.jpg",
   absoluteTitle = true,
   noindex,
 }: PageMetaInput): Metadata {
@@ -69,10 +69,10 @@ export function businessJsonLd() {
     name: site.name,
     alternateName: "Foodtruck Der Landstreicher",
     description:
-      "Foodtruck und Streetfood-Catering aus Lichtenfels: Burger, BBQ aus dem Smoker und Streetfood für Hochzeiten, Firmenfeiern und Events in Franken, der Oberpfalz und Thüringen.",
+      "Foodtruck und Streetfood-Catering aus Lichtenfels: frische Burger und echtes American BBQ aus dem Offset-Smoker für Hochzeiten, Firmenfeiern und Events in Franken, der Oberpfalz und Thüringen.",
     url: site.url,
     logo: absoluteUrl("/brand/logo-landstreicher.jpg"),
-    image: [absoluteUrl("/images/truck-landstreicher-seite.jpg"), absoluteUrl("/images/burger-heumilchkaese-rauke.jpg")],
+    image: [absoluteUrl("/images/truck-landstreicher-seite.jpg"), absoluteUrl("/images/burger-heumilchkaese-rauke-v2.jpg")],
     email: site.email,
     telephone: site.phone,
     address: {
@@ -124,7 +124,7 @@ export function faqJsonLd(faqs: Faq[]) {
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a.join(" ") },
+      acceptedAnswer: { "@type": "Answer", text: f.a.join(" ").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") },
     })),
   };
 }

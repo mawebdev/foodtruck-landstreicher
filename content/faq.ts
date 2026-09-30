@@ -1,6 +1,7 @@
 /**
  * FAQ-Inhalte. Regel: Der erste Satz beantwortet die Frage direkt.
  * Alles, was nicht belegt ist, steht als TODO im Code – nicht im Text.
+ * Interne Links in Antworten: [Linktext](/pfad).
  */
 
 export type Faq = { q: string; a: string[] };
@@ -22,13 +23,13 @@ export const generalFaq: Faq[] = [
   {
     q: "Welche Speisen bietet der Landstreicher an?",
     a: [
-      "Burger mit 180 g Rindfleisch in vielen Varianten, BBQ aus dem US-Smoker wie Texas Brisket, Pulled Pork oder Spareribs, dazu hausgemachte, handgeschnittene Pommes, Bowls und Desserts wie Kaiserschmarrn. Die komplette Auswahl steht auf unserer Speisekarte.",
+      "Homemade Burger in vielen Varianten, echtes American BBQ aus dem Offset-Smoker wie Texas Brisket, Pulled Pork, Pulled Beef oder Beef Cheeks, dazu hausgemachte, handgeschnittene Pommes, Bowls und Desserts wie Kaiserschmarrn. Die komplette Auswahl steht auf unserer [Speisekarte](/speisekarte).",
     ],
   },
   {
     q: "Gibt es vegetarische Optionen?",
     a: [
-      "Ja. Es gibt einen vegetarischen Burger mit 150 g Patty auf Weizenprotein-Basis, getrockneten Tomaten, Heumilchkäse und Rauke. Bowls lassen sich vegetarisch zusammenstellen, und auch Pommes, Süßkartoffel-Pommes und die Desserts sind fleischlos.",
+      "Ja. Es gibt einen vegetarischen Burger mit Patty auf Weizenprotein-Basis, getrockneten Tomaten, Heumilchkäse und Rauke. Bowls lassen sich vegetarisch zusammenstellen, und auch Pommes, Süßkartoffel-Pommes und die Desserts sind fleischlos.",
       // TODO: Betreiber fragen, welche Gerichte vegan möglich sind – dann hier ergänzen.
     ],
   },
@@ -41,7 +42,7 @@ export const generalFaq: Faq[] = [
   {
     q: "Wie viele Personen könnt ihr versorgen?",
     a: [
-      "Bis zu 600 Portionen Burger und Pommes pro Stunde sind drin. Wie viele Gäste sich daraus ergeben, hängt vom Menü und vom zeitlichen Ablauf ab. Schreibt uns in der Anfrage die geplante Gästezahl – wir sagen euch ehrlich, was in welchem Zeitraum machbar ist.",
+      "Bis zu 320 Portionen pro Stunde sind drin. Wie viele Gäste sich daraus ergeben, hängt vom Menü und vom zeitlichen Ablauf ab. Schreibt uns in der Anfrage die geplante Gästezahl – wir sagen euch ehrlich, was in welchem Zeitraum machbar ist.",
     ],
   },
   {
@@ -66,7 +67,7 @@ export const generalFaq: Faq[] = [
   {
     q: "Wie früh sollte ich anfragen?",
     a: [
-      "So früh wie möglich, besonders für Samstage in der Hochzeits- und Sommerfestsaison. Aber auch kurzfristige Anfragen lohnen sich: Mit drei Trucks sind wir flexibel – fragt einfach an, auch wenn es knapp scheint.",
+      "So früh wie möglich, besonders für Samstage in der Hochzeits- und Sommerfestsaison. Aber auch kurzfristige Anfragen lohnen sich: Mit zwei Trucks und einem Offset-Smoker sind wir flexibel – fragt einfach an, auch wenn es knapp scheint.",
     ],
   },
 ];
@@ -116,7 +117,7 @@ export const companyFaq: Faq[] = [
   {
     q: "Wie läuft die Essensausgabe bei vielen Gästen?",
     a: [
-      "Zügig: Bis zu 600 Portionen Burger und Pommes pro Stunde sind drin. Bei größeren Gruppen stimmen wir zusätzlich Menü und Ablauf ab – etwa mit einer kleineren Auswahl an Burgern oder BBQ, das sich schnell portionieren lässt. Genaues klären wir, sobald wir Gästezahl und Zeitfenster kennen.",
+      "Zügig: Bis zu 320 Portionen pro Stunde sind drin. Bei größeren Gruppen stimmen wir zusätzlich Menü und Ablauf ab – etwa mit einer kleineren Auswahl an Burgern oder BBQ, das sich schnell portionieren lässt. Genaues klären wir, sobald wir Gästezahl und Zeitfenster kennen.",
     ],
   },
   {

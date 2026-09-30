@@ -1,3 +1,5 @@
+import { locationPages } from "./locations";
+
 export type NavChild = { readonly label: string; readonly href: string; /** im Desktop-Dropdown weglassen (z. B. „Übersicht" – der Elternpunkt zeigt schon dorthin) */ readonly hideInDropdown?: boolean };
 export type NavItem = {
   readonly label: string;
@@ -32,7 +34,7 @@ export const mainNav: readonly NavItem[] = [
   {
     label: "Einsatzgebiete",
     href: "/einsatzgebiete",
-    match: ["/einsatzgebiete", "/foodtruck-bamberg", "/foodtruck-coburg", "/foodtruck-bayreuth", "/foodtruck-nuernberg"],
+    match: ["/einsatzgebiete", ...locationPages.map((p) => `/${p.slug}`)],
   },
 ];
 

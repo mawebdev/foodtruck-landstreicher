@@ -23,44 +23,43 @@ import { businessJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
 import { bookingHref, site } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "Foodtruck „Der Landstreicher“ | Streetfood & Catering",
+  title: "Foodtruck „Der Landstreicher“ | Burger, American BBQ & Catering",
   description:
-    "Der Landstreicher bringt frische Burger, BBQ und Streetfood direkt zu eurem Event. Foodtruck-Catering für Hochzeiten, Firmenfeiern und Veranstaltungen in Franken, der Oberpfalz und Thüringen.",
+    "Frische Burger und echtes American BBQ: Brisket, Pulled Pork, Pulled Beef und Beef Cheeks aus dem Offset-Smoker. Der Landstreicher kommt zu eurer Hochzeit, Firmenfeier oder eurem Event – in Franken, der Oberpfalz und Thüringen.",
   path: "/",
 });
 
 const facts = [
   { title: "Frisch vor Ort", text: "Gekocht wird im Truck, direkt bei eurem Event." },
-  { title: "Burger & Smoker American BBQ", text: "180 g Rind auf dem Burger, Brisket bis zu 14 Stunden im Smoker." },
+  { title: "Burger & American BBQ", text: "Homemade Burger vom Grill, Brisket bis zu 14 Stunden im Offset-Smoker." },
   { title: "Vegetarisch", text: "Ein eigener Veggie-Burger – nicht nur Beilagen." },
   { title: "Pommes von Hand", text: "Hausgemacht und handgeschnitten, auch als Süßkartoffel." },
-  { title: "Autark", text: "Für die Dunstabzugshaube genügt eine normale Steckdose – alles andere ist an Bord." },
-  { title: "Klein bis groß", text: "Vom Geburtstag im Garten bis zum Stadtfest." },
+  { title: "Alles an Bord", text: "Für die Dunstabzugshaube genügt eine normale Steckdose – alles andere ist an Bord." },
+  { title: "Klein bis groß", text: "Vom Geburtstag im Garten bis zum großen Sommerfest in eurem Betrieb – mit bis zu 320 Portionen pro Stunde." },
 ];
 
 const foodTeasers: FoodCategoryTeaser[] = [
   {
     no: "01",
     title: "Burger",
-    text: "180 g Rindfleisch, frisch auf der Platte. Vom Klassik bis zum Trüffelschwein – vierzehn Varianten.",
+    text: "Frische Burger direkt von der Plancha-Platte in verschiedenen Varianten.",
     href: "/speisekarte#burger",
     image: images.burgerHero,
     imagePosition: "50% 60%",
   },
   {
     no: "02",
-    title: "Smoker American BBQ",
-    text: "Texas Brisket, Pulled Pork, Pulled Beef, Spareribs und Dinosaur Ribs – low & slow aus dem US-Smoker.",
+    title: "American BBQ",
+    text: "Saftiges Brisket, Pulled Pork, Pulled Beef und zarte Beef Cheeks – low & slow aus dem Offset-Smoker.",
     href: "/speisekarte#smoker",
     image: images.smoker,
   },
   {
     no: "03",
-    title: "Streetfood",
+    title: "Bowls",
     text: "Große Bowls – wahlweise mit Schafskäse, Garnelen, Putenbrust oder Steakstreifen.",
     href: "/speisekarte#vorspeisen",
     image: images.bowl,
-    imagePosition: "50% 40%",
   },
   {
     no: "04",
@@ -76,6 +75,7 @@ const foodTeasers: FoodCategoryTeaser[] = [
     href: "/speisekarte#beilagen",
     image: images.apfelkuechle,
     imagePosition: "50% 60%",
+    strongOverlay: true,
   },
 ];
 
@@ -104,7 +104,7 @@ export default function HomePage() {
               <Image src={images.truckFront.src} alt={images.truckFront.alt} width={960} height={720} sizes="20vw" className="h-auto w-full" />
             </div>
             <p className="hand absolute -top-3 right-2 rotate-[5deg] text-[1.7rem] text-cream drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] sm:right-6 lg:-right-4 lg:-top-8 lg:text-3xl">
-              180 g Rind,
+              Homemade Burger,
               <br />
               frisch auf der Platte
               <svg aria-hidden viewBox="0 0 50 50" className="-mb-8 ml-auto block h-10 w-10 text-red" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
@@ -115,9 +115,9 @@ export default function HomePage() {
 
           {/* Text */}
           <div className="lg:col-span-7 lg:row-start-1">
-            <SlashLabel items={["Foodtruck", "Streetfood", "Catering"]} className="fade-in text-cream/70" />
+            <SlashLabel items={["Burger", "American BBQ", "Catering"]} className="fade-in text-cream/70" />
             <h1 className="fade-in mt-6 text-[0.95rem] font-semibold text-cream/80 [animation-delay:100ms]">
-              Foodtruck &amp; Streetfood-Catering aus Lichtenfels
+              Frische Burger &amp; echtes American BBQ – Foodtruck aus Lichtenfels
             </h1>
             <p className="mt-5">
               <StaggerLines
@@ -133,7 +133,7 @@ export default function HomePage() {
               />
             </p>
             <p className="fade-in mt-8 max-w-xl text-lg leading-relaxed text-cream/80 [animation-delay:500ms]">
-              Frische Burger, BBQ aus dem Smoker und Streetfood, frisch aus dem Truck. Wir kommen zu Hochzeiten, Firmenfeiern, Geburtstagen und Events.
+              Saftiges Brisket, Pulled Pork, Pulled Beef und zarte Beef Cheeks direkt aus dem Offset-Smoker. Wir kommen zu euch und bringen echten BBQ-Genuss auf eure Hochzeit, Firmenfeier, euren Geburtstag oder euer Event.
             </p>
             <div className="fade-in mt-10 flex flex-col gap-3 [animation-delay:600ms] sm:flex-row sm:flex-wrap">
               <ButtonLink href={bookingHref}>Foodtruck für mein Event anfragen</ButtonLink>
@@ -154,11 +154,13 @@ export default function HomePage() {
         <div className="container-site grid gap-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <Label>Streetfood mit Geschichte</Label>
-            <p className="font-display mt-4 text-[clamp(3.5rem,10vw,8rem)] leading-[0.85] uppercase">
-              Tradition<span className="text-red">.</span>
+            <p className="font-display mt-4 text-[clamp(2.6rem,11vw,4.5rem)] leading-[0.85] lg:text-[clamp(3rem,5.5vw,4.5rem)] uppercase">
+              Der
+              <br />
+              Landstreicher<span className="text-red">.</span>
             </p>
             <p className="mt-6 max-w-sm text-xl leading-snug">
-              Der Truck wurde nicht neu erfunden: Wir haben ihn übernommen und fahren seine Geschichte weiter.
+              Ihr konzentriert euch auf die Feier und eure Gäste – wir sorgen dafür, dass sie satt und glücklich werden.
             </p>
           </Reveal>
           <ul className="grid content-end gap-x-10 sm:grid-cols-2 lg:col-span-7">
@@ -203,21 +205,22 @@ export default function HomePage() {
                   Genau das ist die Idee hinter dem Landstreicher: ein Foodtruck mit eigener Küche, der zu euch kommt. Wir stellen uns auf den Hof, die Wiese oder den Firmenparkplatz, bauen auf und kochen – ohne dass ihr Strom oder Wasser bereitstellen müsst.
                 </p>
                 <p>
-                  Eure Gäste holen sich ihr Essen frisch am Truck. Keine Wärmebehälter, kein Buffet, das seit einer Stunde steht. Dafür Burger, BBQ und Pommes, die gerade eben noch auf der Platte waren.
+                  Eure Gäste holen sich ihr Essen frisch am Truck. Keine Wärmebehälter, kein Buffet, das seit einer Stunde steht. Dafür Burger und Pommes, die gerade eben noch auf der Platte waren, und BBQ, das stundenlang im Offset-Smoker gezogen hat. Alles, was dafür nötig ist, bringen wir mit – und
+                  wenn wir fahren, nehmen wir es auch wieder mit.
                 </p>
                 <p>
                   Ob ihr einen <Link href="/foodtruck-catering" className="prose-link">Foodtruck mieten</Link> wollt für eure{" "}
                   <Link href="/foodtruck-hochzeit" className="prose-link">Hochzeit</Link>, die{" "}
-                  <Link href="/foodtruck-firmenfeier" className="prose-link">Firmenfeier</Link> oder den runden Geburtstag: Den Rahmen setzt ihr, wir bringen den Truck.
+                  <Link href="/foodtruck-firmenfeier" className="prose-link">Firmenfeier</Link> oder den runden Geburtstag: Den Rahmen setzt ihr. Wir bringen den Truck und kümmern uns um den Rest.
                 </p>
               </div>
             </Reveal>
             <div className="relative mt-14">
               <ImageReveal className="relative aspect-[4/3] overflow-hidden rounded-xs">
-                <Image src={images.kochDreiBurger.src} alt={images.kochDreiBurger.alt} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+                <Image src={images.offsetSmoker.src} alt={images.offsetSmoker.alt} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
               </ImageReveal>
               <p className="hand absolute -bottom-10 right-4 rotate-[-4deg] text-3xl text-red md:-right-8">
-                drei Burger, drei Mal frisch
+                hier zieht das BBQ stundenlang
               </p>
             </div>
           </div>
@@ -233,7 +236,7 @@ export default function HomePage() {
                 <h2 id="food-heading">
                   <span className="label mb-5 flex items-center gap-2.5 opacity-80">
                     <span aria-hidden className="inline-block size-1.5 rounded-full bg-red" />
-                    Burger, BBQ &amp; Streetfood
+                    Burger, American BBQ &amp; Bowls
                   </span>
                   <span className="font-display block text-[clamp(3rem,9vw,8rem)] uppercase">Was bieten wir an?</span>
                 </h2>
@@ -291,9 +294,9 @@ export default function HomePage() {
             <Reveal delay={0.1}>
               <div className="mt-10 max-w-xl space-y-4 text-lg leading-relaxed text-cream/85">
                 <p>
-                  Das Fleisch kommt frisch auf die Platte, das Bun wird warm gemacht, Käse drauf, Sauce, Salat, Zwiebeln. Und dann muss er in die Hand, solange alles noch genau so ist, wie es sein soll.
+                  Gerade bei Veranstaltungen muss jeder Handgriff sitzen, damit eure Gäste zügig ihr Essen bekommen und die Qualität stimmt. Darauf sind wir als Team vom Landstreicher bestens eingespielt.
                 </p>
-                <p className="font-semibold text-cream">Genau deshalb kochen wir bei Events direkt vor Ort.</p>
+                <p className="font-semibold text-cream">So kommt jeder Burger frisch, heiß und saftig auf den Teller.</p>
               </div>
             </Reveal>
           </div>
@@ -310,7 +313,9 @@ export default function HomePage() {
                   <span aria-hidden className="inline-block size-1.5 rounded-full bg-red" />
                   Foodtruck für Hochzeiten, Firmenfeiern &amp; Events
                 </span>
-                <span className="font-display block text-[clamp(3rem,8.5vw,7.5rem)] uppercase">Ihr stellt die Gäste. Wir bringen den Truck.</span>
+                <span className="font-display block text-[clamp(3rem,8.5vw,7.5rem)] uppercase">
+                  Ihr feiert. <span className="text-red">Wir kochen.</span>
+                </span>
               </h2>
             </Reveal>
           </div>
@@ -360,11 +365,14 @@ export default function HomePage() {
               <p className="mt-8 max-w-md text-lg leading-relaxed text-ink/80">
                 Unser Foodtruck startet in Lichtenfels und ist in Franken, der Oberpfalz und Teilen Thüringens unterwegs.
               </p>
-              <ul className="mt-10 border-t border-ink/15">
+              <ul className="mt-10 grid border-t border-ink/15 sm:grid-cols-2 sm:gap-x-8">
                 {locationPages.map((l) => (
                   <li key={l.slug} className="border-b border-ink/15">
-                    <Link href={`/${l.slug}`} className="group flex min-h-14 items-center justify-between py-3 text-lg font-semibold">
-                      <span>Foodtruck in {l.city}</span>
+                    <Link href={`/${l.slug}`} className="group flex min-h-12 items-center justify-between py-2.5 font-semibold">
+                      <span>
+                        <span className="sr-only">Foodtruck in </span>
+                        {l.city}
+                      </span>
                       <span aria-hidden className="text-red transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </Link>
                   </li>
@@ -383,68 +391,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ───────────── GESCHICHTE ───────────── */}
-      <section aria-labelledby="story-heading" className="on-dark grain grain-light overflow-hidden bg-ink py-24 text-cream md:py-36">
-        <div className="container-site">
-          <div className="grid gap-14 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <Reveal>
-                <h2 id="story-heading">
-                  <span className="label mb-5 flex items-center gap-2.5 text-cream/70">
-                    <span aria-hidden className="inline-block size-1.5 rounded-full bg-red" />
-                    Über den Landstreicher
-                  </span>
-                  <span className="font-display block text-[clamp(3rem,8vw,6.5rem)] uppercase">Nicht gestern entstanden.</span>
-                </h2>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-cream/80">
-                  <p>
-                    Was einmal als klassische Imbissidee begann, ist über die Jahre zu einem mobilen Foodtruck mit eigener Küche, eigenem Stil und einer ziemlich langen Liste hungriger Gäste geworden.
-                  </p>
-                  <p>
-                    {site.yearsTagline} – der Truck selbst ist älter als das heutige Team hinter dem Fenster und wurde
-                    übernommen, nicht neu erfunden. Geblieben ist, worauf es ankommt: gutes Essen, frisch gemacht, und
-                    Leute, die zufrieden nach Hause gehen.
-                  </p>
-                </div>
-                <div className="mt-10">
-                  <ButtonLink href="/ueber-uns" variant="outline-light">
-                    Unsere Geschichte
-                  </ButtonLink>
-                </div>
-              </Reveal>
-            </div>
-            <div className="relative lg:col-span-5 lg:col-start-8">
-              <ImageReveal className="relative aspect-[4/5] overflow-hidden rounded-xs">
-                <Image src={images.kochZweiBurger.src} alt={images.kochZweiBurger.alt} fill sizes="(min-width: 1024px) 38vw, 100vw" className="object-cover" />
-              </ImageReveal>
-            </div>
-          </div>
-
-          {/* Geschwister-Truck: Das Karibische Eck ist ein eigenständiges Angebot
-              mit eigener Website – hier steht bewusst nur der externe Link,
-              keine Inhalte und keine Fotos davon. */}
-          <div className="mt-24 border-t border-cream/15 pt-12 md:mt-32 md:pt-16 lg:col-span-12">
-            <Reveal>
-              <p className="max-w-2xl text-lg leading-relaxed text-cream/70">
-                Übrigens: {site.karibischesEck.name} ist ein eigener Truck mit eigener Karte und eigener Website.
-              </p>
-              <a
-                href={site.karibischesEck.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline mt-3 inline-flex items-center gap-2 font-semibold text-cream"
-              >
-                Mehr auf karibischeseck.de <span aria-hidden>↗</span>
-              </a>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* ───────────── GALERIE-TEASER ───────────── */}
-      <section aria-labelledby="gallery-heading" className="py-24 md:py-32">
+      <section aria-labelledby="gallery-heading" className="on-dark grain grain-light bg-ink py-24 text-cream md:py-32">
         <div className="container-site">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
             <Reveal>
@@ -461,7 +409,7 @@ export default function HomePage() {
               <Image src={images.eventTafel.src} alt={images.eventTafel.alt} fill sizes="(min-width: 768px) 55vw, 100vw" className="object-cover" />
             </ImageReveal>
             <ImageReveal delay={0.08} className="relative aspect-square overflow-hidden rounded-xs md:col-span-5 md:aspect-[16/10]">
-              <Image src={images.burgerDurchreiche.src} alt={images.burgerDurchreiche.alt} fill sizes="(min-width: 768px) 38vw, 50vw" className="object-cover" />
+              <Image src={images.firmenevent.src} alt={images.firmenevent.alt} fill sizes="(min-width: 768px) 38vw, 50vw" className="object-cover" />
             </ImageReveal>
             <ImageReveal delay={0.16} className="relative aspect-square overflow-hidden rounded-xs md:col-span-5 md:aspect-[16/10]">
               <Image src={images.truckSeite.src} alt={images.truckSeite.alt} fill sizes="(min-width: 768px) 38vw, 50vw" className="object-cover" />

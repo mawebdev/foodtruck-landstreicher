@@ -16,7 +16,7 @@ const LAT0 = 50.82;
 const COS = Math.cos((50 * Math.PI) / 180);
 const project = (lat: number, lon: number) => ({ x: (lon - LON0) * COS * S + 10, y: (LAT0 - lat) * S + 10 });
 
-const leftLabels = new Set(["Fürth", "Erlangen", "Würzburg", "Weiden i. d. OPf.", "Regensburg", "Ilmenau"]);
+const leftLabels = new Set(["Fürth", "Erlangen", "Würzburg", "Weiden i. d. OPf.", "Regensburg", "Ilmenau", "Meiningen"]);
 const shortNames: Record<string, string> = {
   "Rothenburg ob der Tauber": "Rothenburg o. d. T.",
 };
@@ -90,15 +90,18 @@ export function RegionMap({ tone = "light", highlight }: { tone?: "light" | "dar
                 <circle cx={p.x} cy={p.y} r="8" fill="var(--color-red)" />
               </>
             ) : (
-              <circle
-                cx={p.x}
-                cy={p.y}
-                r={a.slug ? 7 : 4.5}
-                fill={a.slug ? "var(--color-red)" : ink}
-                fillOpacity={a.slug ? 1 : 0.65}
-                stroke={isHighlight ? ink : "none"}
-                strokeWidth="2"
-              />
+              <>
+                {isHighlight && <circle cx={p.x} cy={p.y} r="18" fill="var(--color-red)" fillOpacity="0.2" />}
+                <circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={a.slug ? 7 : 4.5}
+                  fill={a.slug ? "var(--color-red)" : ink}
+                  fillOpacity={a.slug ? 1 : 0.65}
+                  stroke={isHighlight ? ink : "none"}
+                  strokeWidth="2"
+                />
+              </>
             )}
             <text
               x={p.x + (left ? -14 : 14)}

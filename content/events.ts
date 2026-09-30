@@ -78,7 +78,7 @@ export const eventTypes: EventType[] = [
     title: "Festival",
     short: "Lange Tage, hungrige Leute.",
     text: "Festivals und Märkte sind lange Tage mit vielen hungrigen Leuten. Genau dafür ist ein Truck gebaut, der mit einer normalen Steckdose auskommt – alles andere ist an Bord.",
-    image: "burgerDurchreiche",
+    image: "festivalStand",
     href: bookingHrefAnlass("Festival"),
     cta: "Festival anfragen",
   },

@@ -14,6 +14,8 @@ type Props = {
   lead: ReactNode;
   image?: SiteImage;
   imagePosition?: string;
+  /** Querformat auf allen Breiten statt Hochformat – zeigt das ganze Motiv */
+  wideImage?: boolean;
   note?: string;
   children?: ReactNode;
 };
@@ -22,7 +24,7 @@ type Props = {
  * Hero für Unterseiten: dunkel, links große Display-Zeilen,
  * rechts ein angeschnittenes Foto mit rotem Versatz.
  */
-export function PageHero({ breadcrumbs, label, h1, display, lead, image, imagePosition = "center", note, children }: Props) {
+export function PageHero({ breadcrumbs, label, h1, display, lead, image, imagePosition = "center", wideImage = false, note, children }: Props) {
   return (
     <section className="on-dark grain grain-light relative overflow-hidden bg-ink pb-16 pt-8 text-cream md:pb-24 md:pt-12">
       <div className="container-site">
@@ -40,7 +42,7 @@ export function PageHero({ breadcrumbs, label, h1, display, lead, image, imagePo
           {image && (
             <div className={`relative ${note ? "mt-14 lg:mt-16" : "lg:mt-10"} lg:col-span-5`}>
               <div aria-hidden className="absolute -bottom-3 -right-3 h-full w-full rounded-xs bg-red md:-bottom-4 md:-right-4" />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xs sm:aspect-[4/3] lg:aspect-[4/5]">
+              <div className={`relative overflow-hidden rounded-xs ${wideImage ? "aspect-[4/3]" : "aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]"}`}>
                 <Image
                   src={image.src}
                   alt={image.alt}

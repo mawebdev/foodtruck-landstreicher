@@ -26,6 +26,6 @@ export const processSteps = [
   {
     no: "05",
     title: "Ihr feiert",
-    text: "Ihr seid bei euren Gästen, nicht in der Küche. Genau so war das gedacht.",
+    text: "Ihr seid bei euren Gästen, wir kümmern uns um den Rest.",
   },
 ] as const;
