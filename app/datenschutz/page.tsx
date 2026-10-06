@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
+import {
+  CONSENT_MAX_AGE_DAYS,
+  CONSENT_STORAGE_KEY,
+  consentCategories,
+  consentServices,
+  hasOptionalServices,
+} from "@/content/consent";
 import { site } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -27,13 +35,25 @@ export default function DatenschutzPage() {
         <h1 className="font-display text-[clamp(3rem,9vw,6rem)] uppercase">Datenschutz</h1>
 
         <div className="mt-12 space-y-12 leading-relaxed">
-          <p>
-            Diese Datenschutzerklärung beschreibt, welche Daten wir bei foodtruck-landstreicher.de verarbeiten,
-            zu welchem Zweck und auf welcher Rechtsgrundlage. Sie ist an die Technik dieser Website angepasst:
-            Diese Website setzt <strong>keine Cookies</strong>, verwendet <strong>keine Analyse- oder
-            Tracking-Tools</strong> und lädt <strong>keine Ressourcen von Drittanbietern</strong> (auch keine
-            Schriften von Google &ndash; die Schriftarten werden direkt von unserem Server mitgeliefert).
-          </p>
+          {/* Text folgt automatisch content/consent.ts – nicht von Hand auf „keine Cookies“ zurücksetzen. */}
+          {hasOptionalServices ? (
+            <p>
+              Diese Datenschutzerklärung beschreibt, welche Daten wir bei foodtruck-landstreicher.de verarbeiten,
+              zu welchem Zweck und auf welcher Rechtsgrundlage. Optionale Dienste, die Cookies setzen oder Daten
+              an Dritte übertragen, laden <strong>nur mit Ihrer Einwilligung</strong> (siehe Abschnitt 8). Die
+              Schriftarten werden direkt von unserem Server mitgeliefert.
+            </p>
+          ) : (
+            <p>
+              Diese Datenschutzerklärung beschreibt, welche Daten wir bei foodtruck-landstreicher.de verarbeiten,
+              zu welchem Zweck und auf welcher Rechtsgrundlage. Sie ist an die Technik dieser Website angepasst:
+              Diese Website setzt <strong>keine Cookies</strong>, verwendet <strong>keine Analyse- oder
+              Tracking-Tools</strong> und lädt <strong>keine Ressourcen von Drittanbietern</strong> (auch keine
+              Schriften von Google &ndash; die Schriftarten werden direkt von unserem Server mitgeliefert).
+              Lediglich Ihre Entscheidung im Cookie-Hinweis wird lokal in Ihrem Browser gespeichert (siehe
+              Abschnitt 8).
+            </p>
+          )}
 
           {/* Hosting: Vercel, vom Betreiber bestätigt (Sep. 2026). */}
           <Section title="1. Hosting und externe Dienste">
@@ -167,13 +187,82 @@ export default function DatenschutzPage() {
             </p>
           </Section>
 
-          <Section title="8. Cookies">
-            <p>
-              Diese Website setzt keine Cookies – weder technisch notwendige noch Cookies zu Analyse- oder
-              Marketingzwecken. Es findet keine Einwilligungsabfrage statt, weil keine Einwilligung nötig ist.
-              Auch auf Ihrem Endgerät gespeicherte Wiedererkennungstechnologien (z. B. Device-Fingerprinting)
-              verwenden wir nicht.
-            </p>
+          <Section title="8. Cookies und Einwilligung">
+            {hasOptionalServices ? (
+              <>
+                <p>
+                  Technisch nicht notwendige Dienste, die Cookies setzen, Informationen auf Ihrem Endgerät
+                  speichern oder auslesen oder Daten an Dritte übertragen, laden erst, nachdem Sie über unser
+                  Einwilligungs-Banner zugestimmt haben (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Ohne
+                  Zustimmung bleiben sie vollständig deaktiviert. Ablehnen ist genauso einfach wie Zustimmen.
+                </p>
+                <p>
+                  <strong>Speicherung Ihrer Entscheidung:</strong> Damit wir Sie nicht bei jedem Seitenaufruf
+                  erneut fragen müssen, speichern wir Ihre Auswahl, den Zeitpunkt und die Version der Abfrage im
+                  lokalen Speicher Ihres Browsers (localStorage, Schlüssel „{CONSENT_STORAGE_KEY}“). Diese Daten
+                  verlassen Ihr Gerät nicht. Die Speicherung ist für den von Ihnen gewünschten Dienst unbedingt
+                  erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG) und dient dem Nachweis der Einwilligung (Art. 6 Abs. 1
+                  lit. c i. V. m. Art. 7 Abs. 1 DSGVO). Nach {Math.round(CONSENT_MAX_AGE_DAYS / 30.4)} Monaten
+                  fragen wir erneut.
+                </p>
+                <p>
+                  <strong>Widerruf:</strong> Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft
+                  widerrufen oder ändern. Beim Widerruf löschen wir die Cookies des betroffenen Dienstes.{" "}
+                  <CookieSettingsButton className="prose-link font-semibold">Cookie-Einstellungen öffnen</CookieSettingsButton>
+                </p>
+                <p>Folgende Dienste setzen wir nur mit Ihrer Einwilligung ein:</p>
+                <ul className="space-y-6">
+                  {consentServices.map((service) => (
+                    <li key={service.id} className="border-l-2 border-red pl-5">
+                      <h3 className="font-bold">
+                        {service.name}{" "}
+                        <span className="font-normal text-muted">({consentCategories[service.category].label})</span>
+                      </h3>
+                      <p className="mt-2">
+                        Anbieter: {service.provider}. Zweck: {service.purpose}
+                        {service.cookies.length > 0 &&
+                          ` Cookies: ${service.cookies
+                            .map((c) => `${c.name}${c.prefix ? "*" : ""} (${c.duration})`)
+                            .join(", ")}.`}
+                        {service.thirdCountry &&
+                          ` Dabei können Daten in ein Drittland (${service.thirdCountry}) übertragen werden; die Übertragung wird auf die Standardvertragsklauseln der EU-Kommission bzw. einen Angemessenheitsbeschluss gestützt.`}{" "}
+                        Weitere Informationen:{" "}
+                        <a
+                          href={service.privacyPolicyUrl}
+                          className="prose-link break-all"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {service.privacyPolicyUrl}
+                        </a>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <>
+                <p>
+                  Diese Website setzt keine Cookies – weder technisch notwendige noch Cookies zu Analyse- oder
+                  Marketingzwecken – und bindet keine Dienste von Drittanbietern ein. Auch
+                  Wiedererkennungstechnologien wie Device-Fingerprinting verwenden wir nicht.
+                </p>
+                <p>
+                  Beim ersten Besuch zeigen wir einen Cookie-Hinweis. Damit er nicht bei jedem Seitenaufruf erneut
+                  erscheint, speichern wir Ihre Entscheidung, den Zeitpunkt und die Version des Hinweises im
+                  lokalen Speicher Ihres Browsers (localStorage, Schlüssel „{CONSENT_STORAGE_KEY}“). Diese Daten
+                  verlassen Ihr Gerät nicht und werden nicht ausgewertet. Die Speicherung ist für den Betrieb des
+                  Hinweises unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Nach{" "}
+                  {Math.round(CONSENT_MAX_AGE_DAYS / 30.4)} Monaten wird der Hinweis erneut angezeigt. Sie können
+                  den Eintrag jederzeit über die Einstellungen Ihres Browsers löschen.
+                </p>
+                <p>
+                  Sollten wir künftig Dienste einsetzen, die eine Einwilligung erfordern, laden diese erst nach
+                  Ihrer Zustimmung über diesen Hinweis. Den aktuellen Stand können Sie jederzeit einsehen:{" "}
+                  <CookieSettingsButton className="prose-link font-semibold">Cookie-Einstellungen öffnen</CookieSettingsButton>
+                </p>
+              </>
+            )}
           </Section>
 
           <Section title="9. Server-Log-Dateien">

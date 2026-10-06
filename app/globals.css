@@ -209,6 +209,15 @@
   animation: fade-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Cookie-Banner: kommt kurz nach dem ersten Paint von unten */
+@keyframes consent-in {
+  from { opacity: 0; transform: translate3d(0, 1.5rem, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.consent-in {
+  animation: consent-in 0.7s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Rote Schrift auf dunklen Flächen automatisch aufhellen (Kontrast ≥ 3:1).
    Bewusst ungelayert, damit es die Utility-Klassen überschreibt. */
 .on-dark .text-red,

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Caveat_Brush, Manrope } from "next/font/google";
+import { CookieConsent } from "@/components/consent/CookieConsent";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileCTA } from "@/components/MobileCTA";
@@ -70,6 +71,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Zum Inhalt springen
         </a>
+        {/* Früh im DOM, damit der Banner direkt nach dem Skip-Link per Tastatur erreichbar ist. */}
+        <CookieConsent />
         <MotionProvider>
           <Header />
           <main id="inhalt" className="flex-1">

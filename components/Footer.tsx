@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
 import { footerNav, legalNav } from "@/content/navigation";
 import { site } from "@/lib/site";
 
@@ -65,7 +66,7 @@ export function Footer() {
           <p>
             © {year} {site.name} · Burgkunstadt / Franken
           </p>
-          <ul className="flex gap-6">
+          <ul className="flex flex-wrap gap-x-6">
             {legalNav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="link-underline inline-block py-2 hover:text-cream">
@@ -73,6 +74,9 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <CookieSettingsButton className="link-underline inline-block py-2 hover:text-cream" />
+            </li>
           </ul>
         </div>
       </div>
