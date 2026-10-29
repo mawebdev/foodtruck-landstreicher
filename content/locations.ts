@@ -168,7 +168,7 @@ export const locationPages: LocationPage[] = [
       },
       {
         title: "Firmenfeier",
-        text: "Sommerfest, Weihnachtsfeier im Hof, Mitarbeiterfest: Der Truck stellt sich aufs Gelände und kocht, ohne dass ihr Strom oder Wasser bereitstellen müsst.",
+        text: "Sommerfest, Weihnachtsfeier im Hof, Mitarbeiterfest: Der Truck stellt sich aufs Gelände und kocht – eine normale Steckdose genügt, alles andere ist an Bord.",
       },
       {
         title: "Hochzeit",
@@ -200,46 +200,55 @@ export const locationPages: LocationPage[] = [
   {
     slug: "foodtruck-bayreuth",
     city: "Bayreuth",
-    metaTitle: "Foodtruck in Bayreuth mieten | Der Landstreicher",
+    metaTitle: "Foodtruck in Bayreuth mieten – BBQ & Burger | Der Landstreicher",
     metaDescription:
-      "Foodtruck-Catering in Bayreuth und Umgebung: frische Burger, Pulled Pork und American BBQ aus dem Offset-Smoker, frisch vor Ort serviert. Für Hochzeiten, Firmenfeiern und private Feste.",
+      "Foodtruck mieten in Bayreuth und im Landkreis: Burger, Pulled Pork und Brisket aus dem Smoker – frisch vor Ort für Hochzeiten, Firmenfeiern und Geburtstage.",
     h1: "Foodtruck in Bayreuth für Hochzeiten, Firmenfeiern & Feste",
-    lead: "Bayreuth, Kulmbach und die Fränkische Schweiz – Oberfranken ist unser Revier. Wir bringen Burger und BBQ aus dem Smoker direkt zu eurer Feier.",
+    lead: "Ob Firmenfeier im Bayreuther Gewerbegebiet, Hochzeit in der Fränkischen Schweiz oder Geburtstag im Garten in Bindlach: Wir bringen Burger und BBQ aus dem Smoker direkt zu eurer Feier.",
     image: "truckFront",
     imageSecondary: "teamPommes",
     intro: {
-      heading: "Oberfranken, einmal quer rüber",
+      heading: "Foodtruck mieten in Bayreuth und im Landkreis",
       paragraphs: [
-        "Von Lichtenfels geht es über Kulmbach nach Bayreuth. Beide Städte fahren wir regelmäßig an – und alles dazwischen auch.",
-        "Gerade bei größeren Feiern spielt der Smoker seine Stärke aus: Brisket, Pulled Pork und Ribs bereiten wir über viele Stunden vor und servieren sie vor Ort.",
+        "Von Lichtenfels aus ist Bayreuth gut erreichbar. Wir kommen in die Stadt und in den ganzen Landkreis – von Bindlach und Weidenberg bis nach Pegnitz und Pottenstein in der Fränkischen Schweiz.",
+        "Gerade bei größeren Feiern spielt der Smoker seine Stärke aus: Brisket, Pulled Pork und Ribs bereiten wir über viele Stunden vor und servieren sie vor Ort. Mit bis zu 320 Portionen pro Stunde werden auch große Gesellschaften schnell satt.",
       ],
     },
     occasions: [
       {
-        title: "BBQ für größere Runden",
-        text: "Pulled Pork, Pulled Beef oder Brisket lassen sich gut für viele Gäste portionieren. Dazu Coleslaw und hausgemachte Pommes – fertig ist ein Menü, das auch bei langen Feiern trägt.",
+        title: "Firmenfeier & Sommerfest",
+        text: "Ob Unternehmen in der Stadt oder Betrieb im Umland: Der Truck steht auf eurem Gelände, eure Leute holen sich ihr Essen direkt am Fenster. Eine normale Steckdose genügt, den Rest bringen wir mit.",
       },
       {
-        title: "Firmenfeier & Teamevent",
-        text: "Ob Unternehmen in der Stadt oder Betrieb im Umland: Der Truck braucht keinen Anschluss und steht dort, wo eure Leute feiern.",
+        title: "Hochzeit in der Fränkischen Schweiz",
+        text: "Scheunen, Gutshöfe und Gasthöfe rund um Bayreuth haben oft keine Profiküche. Genau da passt ein Truck mit eigener Küche an Bord.",
       },
       {
-        title: "Hochzeit & Geburtstag",
-        text: "Für private Feste stellen wir die Karte individuell zusammen – mit vegetarischer Alternative, damit niemand nur Beilagen isst.",
+        title: "Geburtstag & Gartenparty",
+        text: "Für private Feste stellen wir die Karte passend zur Gästezahl zusammen – mit vegetarischer Alternative, damit niemand nur Beilagen isst.",
       },
     ],
     practical: {
       heading: "Planung für Bayreuth",
       paragraphs: [
-        "Im Sommer ist in Bayreuth viel los. Wenn euer Termin in die Hauptsaison fällt, lohnt sich eine frühe Anfrage – besonders für Samstage.",
+        "Während der Festspielzeit im Juli und August ist in Bayreuth viel los, und Samstage im Sommer sind schnell vergeben. Wenn euer Termin in die Hauptsaison fällt, fragt am besten früh an.",
         "Wenn BBQ aus dem Smoker auf die Karte soll, braucht das Vorlauf: Brisket gart bis zu 14 Stunden. Sagt uns deshalb möglichst früh, was ihr euch vorstellt.",
+        "Für den Truck braucht es einen festen, ebenen Stellplatz von rund 7,5 × 2,5 m. Auf Flächen, die euch nicht selbst gehören, klären wir vorab gemeinsam, ob eine Erlaubnis nötig ist.",
       ],
     },
-    nearby: ["Kulmbach", "Pegnitz", "Hollfeld", "Thurnau", "Bindlach"],
+    nearby: ["Bindlach", "Weidenberg", "Pegnitz", "Pottenstein", "Kulmbach"],
     faq: [
       {
-        q: "Kommt ihr auch nach Kulmbach?",
-        a: ["Ja, Kulmbach liegt zwischen Lichtenfels und Bayreuth und gehört fest zu unseren Einsatzgebieten."],
+        q: "Kommt ihr in den ganzen Landkreis Bayreuth?",
+        a: [
+          "Ja. Neben der Stadt Bayreuth fahren wir auch in den Landkreis – etwa nach Bindlach, Weidenberg, Creußen, Pegnitz oder Pottenstein. Die Anfahrt steht direkt in eurem Angebot.",
+        ],
+      },
+      {
+        q: "Habt ihr während der Festspielzeit Termine frei?",
+        a: [
+          "Grundsätzlich ja. Im Juli und August sind die Wochenenden aber gefragt – je früher ihr anfragt, desto besser. Mit zwei Trucks und einem Offset-Smoker sind wir trotzdem flexibel.",
+        ],
       },
       {
         q: "Können wir BBQ aus dem Smoker für die ganze Gesellschaft bekommen?",

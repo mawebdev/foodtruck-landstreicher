@@ -202,7 +202,7 @@ export default function HomePage() {
                   Burger frisch vom Grill schmecken eben am besten, wenn der Grill direkt daneben steht.
                 </p>
                 <p>
-                  Genau das ist die Idee hinter dem Landstreicher: ein Foodtruck mit eigener Küche, der zu euch kommt. Wir stellen uns auf den Hof, die Wiese oder den Firmenparkplatz, bauen auf und kochen – ohne dass ihr Strom oder Wasser bereitstellen müsst.
+                  Genau das ist die Idee hinter dem Landstreicher: ein Foodtruck mit eigener Küche, der zu euch kommt. Wir stellen uns auf den Hof, die Wiese oder den Firmenparkplatz, bauen auf und kochen. Eine normale Steckdose genügt, alles andere ist an Bord.
                 </p>
                 <p>
                   Eure Gäste holen sich ihr Essen frisch am Truck. Keine Wärmebehälter, kein Buffet, das seit einer Stunde steht. Dafür Burger und Pommes, die gerade eben noch auf der Platte waren, und BBQ, das stundenlang im Offset-Smoker gezogen hat. Alles, was dafür nötig ist, bringen wir mit – und
