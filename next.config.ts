@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       },
       { source: "/unsere-speisekarte", destination: "/speisekarte", permanent: true },
       { source: "/den-landstreicher-buchen", destination: "/foodtruck-buchen", permanent: true },
+      { source: "/foodtruck-landstreicher-buchen", destination: "/foodtruck-buchen", permanent: true },
       { source: "/datenschutzerklaerung", destination: "/datenschutz", permanent: true },
     ];
   },
